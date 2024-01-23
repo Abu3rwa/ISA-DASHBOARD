@@ -26,3 +26,20 @@ thead {
 tr {
   border: 1px #fdffff solid;
 }
+.students .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.action-btn {
+  font-size: 8px;
+}
+.students .actions .delete {
+  color: red;
+}
+.students .actions .details {
+  color: blue;
+}
+.students .actions .edit {
+  color: var(--main-bg);
+}

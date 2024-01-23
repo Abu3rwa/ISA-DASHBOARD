@@ -1,0 +1,32 @@
+.students-details {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  margin-top: 50px;
+}
+.students-details .st-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  align-self: center;
+}
+.students-details .basic-information .field {
+  color: var(--main-bg);
+  font-weight: 600;
+  margin: 5px;
+  color: #000;
+}
+.students-details .basic-information {
+  background-color: rgba(237, 255, 238, 0.678);
+  height: 100vh;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.other-information {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}

@@ -1,4 +1,7 @@
 .appbar {
   background-color: rgb(0, 107, 84) !important;
   box-shadow: none !important;
+  height: 50px;
+  justify-content: center;
+  align-items: start;
 }

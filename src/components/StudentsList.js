@@ -4,12 +4,23 @@ import {
   Paper,
   Typography,
   CircularProgress,
+  IconButton,
 } from "@material-ui/core";
 import { getDocs, collection } from "firebase/firestore";
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 // import firebase from "firebase/firebase-app";
 import db from "../firebase";
 import { DataGrid } from "@mui/x-data-grid";
+import {
+  Delete,
+  Details,
+  DetailsTwoTone,
+  EditRounded,
+  More,
+  RemoveRedEye,
+  RemoveRedEyeOutlined,
+} from "@material-ui/icons";
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -69,6 +80,7 @@ const StudentList = () => {
                 <th className="t-c t-head">Grade</th>
                 <th className="t-c t-head">Age</th>
                 <th className="t-c t-head">Gender</th>
+                <th className="t-c t-head">Actions</th>
               </tr>
             </thead>
             <TableBody>
@@ -80,6 +92,20 @@ const StudentList = () => {
                   <th className="t-c">{student.grade}</th>
                   <th className="t-c">{student.age}</th>
                   <th className="t-c">{student.gender}</th>
+                  <th className="t-c actions">
+                    {" "}
+                    <IconButton>
+                      <Delete className="action-btn delete" />
+                    </IconButton>
+                    <Link to={`/students/${student.id}`}>
+                      <IconButton>
+                        <RemoveRedEyeOutlined className="action-btn details" />
+                      </IconButton>
+                    </Link>
+                    <IconButton>
+                      <EditRounded className="action-btn edit" />
+                    </IconButton>
+                  </th>
                 </tr>
               ))}
             </TableBody>
