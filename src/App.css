@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+:root {
+  --light-rose: rgb(235 82 155);
+  --md-rose: rgb(133 28 60);
+  --dark-rose: rgb(56 10 47);
+  --trans-rose: rgb(235 82 155 / 62%);
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sm-logo {
+  width: 45px;
+  height: 45px;
+  clip-path: circle(50%);
+}
+.logo-md {
+  width: 180px;
+  height: 180px;
+  clip-path: circle(50%);
+}
+
+.trans-rose {
+  color: rgb(235 82 155 / 62%);
+}
+.dark-rose {
+  color: rgb(56 10 47);
+}
+.md-rose {
+  color: rgb(210 81 162);
+}
+.light-rose {
+  color: rgb(235 82 155);
+}
+.tx-dark {
+  color: rgb(61, 61, 61);
+}
+.loading {
+  color: var(--light-rose) !important;
+  height: fit-content;
+  position: fixed;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+  /* left: 50%; */
+  top: 30vh;
+  width: 100px !important;
+  height: 100px !important;
+}
+.loading-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #851c3b00;
+}
+.heading {
+  text-align: center;
+  font-weight: bold;
+  color: #00eb3e;
+  margin-top: 50px !important;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.tn {
+  color: #d800eb;
+}

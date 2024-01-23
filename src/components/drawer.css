@@ -1,0 +1,7 @@
+.drawer-btn {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-radius: 5px !important;
+  width: 100% !important;
+}
