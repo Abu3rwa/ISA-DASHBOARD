@@ -1,9 +1,10 @@
+import "./home.css";
 import React from "react";
 import PersistentDrawerLeft from "../components/PersistentDrawerLeft";
 
 function HomeScreen() {
   return (
-    <div>
+    <div className="home">
       <PersistentDrawerLeft />
     </div>
   );

@@ -5,3 +5,15 @@
   border-radius: 5px !important;
   width: 100% !important;
 }
+.drawer {
+  background-color: var(--main-bg) !important;
+  width: 300px;
+}
+.drawer-close {
+  display: none;
+  width: 0;
+}
+.drawer-open {
+  display: block;
+  width: 300px;
+}

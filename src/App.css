@@ -12,11 +12,21 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;  height:calc(100vh - 80px);
+  width: calc(100vw - 300px);
+  flex-direction: column;
+}
 :root {
   --light-rose: rgb(235 82 155);
   --md-rose: rgb(133 28 60);
   --dark-rose: rgb(56 10 47);
-  --trans-rose: rgb(235 82 155 / 62%);
+  --ligt-txt: rgba(54, 54, 54, 0.829);
+  --main-txt: rgb(30, 34, 32);
+  --main-bg:: rgb(0, 107, 84) !important;
+  
 }
 .App-header {
   background-color: #282c34;

@@ -1,0 +1,28 @@
+.students table th {
+  border: 1px #056448 solid;
+  font-size: 20;
+  padding: 8px !important;
+  margin: 8px !important;
+}
+.students {
+  width: calc(100vw - 300px) !important;
+  padding: 15px;
+}
+.students table {
+  width: 100%;
+  margin: 7px;
+  padding: 8px !important;
+}
+.t-c-head {
+  font-size: 20;
+  background-color: #038166 !important;
+  font-weight: bold !important;
+}
+thead {
+  font-size: 20;
+  background-color: #0000002a !important;
+  font-weight: bold !important;
+}
+tr {
+  border: 1px #fdffff solid;
+}

@@ -1,3 +1,5 @@
+import "./appbar.css";
+import "./drawer.css";
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -9,10 +11,8 @@ import List from "@mui/material/List";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import StudentsTable from "./StudentsTable";
 import { Typography, IconButton, Button } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
-import SchoolIcon from "@material-ui/icons/School";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AnnouncementIcon from "@material-ui/icons/Announcement";
 import BusinessIcon from "@material-ui/icons/Business";
@@ -23,7 +23,8 @@ import {
   ExitToAppSharp,
   People,
 } from "@material-ui/icons";
-import "./drawer.css";
+import StudentList from "./StudentsList";
+import { ButtonGroup } from "@mui/material";
 
 const drawerWidth = 300;
 
@@ -74,29 +75,22 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setOpen(!open);
   };
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar className="appbar" position="fixed" open={open}>
         <Toolbar>
-          <IconButton
-            className="m-2"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
+          <IconButton onClick={handleDrawerClose}>
             {!open && <MenuIcon />}
           </IconButton>
           <Typography variant="h4" noWrap component="div">
@@ -104,44 +98,36 @@ export default function PersistentDrawerLeft() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
+      <div className={`drawer ${open ? "drawer-open" : "drawer-close"}`}>
+        <ButtonGroup className="drawer">
           <IconButton className="drawer-btn" onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+            {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-        </DrawerHeader>
+        </ButtonGroup>
         <List className="row">
           <IconButton className="drawer-btn" color="inherit">
-            HomeIcon
+            Home
             <HomeIcon className="m-2" />
           </IconButton>
 
           <IconButton className="drawer-btn" color="inherit">
-            SchoolIcon
-            <SchoolIcon className="m-2" />
+            Students
+            <AccountCircleIcon className="m-2" />
           </IconButton>
-
           <IconButton className="drawer-btn" color="inherit">
-            Students Accounts
+            Teachers
             <AccountCircleIcon className="m-2" />
           </IconButton>
 
+          <IconButton className="drawer-btn" color="inherit">
+            Employees
+            <People className="m-2" />
+          </IconButton>
+
+          <IconButton className="drawer-btn" color="inherit">
+            Finances
+            <BusinessIcon className="m-2" />
+          </IconButton>
           <IconButton className="drawer-btn" color="inherit">
             Library
             <BookSharp className="m-2" />
@@ -162,24 +148,15 @@ export default function PersistentDrawerLeft() {
           </IconButton>
 
           <IconButton className="drawer-btn" color="inherit">
-            Employees
-            <People className="m-2" />
-          </IconButton>
-
-          <IconButton className="drawer-btn" color="inherit">
-            Finances
-            <BusinessIcon className="m-2" />
-          </IconButton>
-          <IconButton className="drawer-btn" color="inherit">
             Calendar
             <CalendarToday className="m-2" />
           </IconButton>
         </List>
-      </Drawer>
-      <Main open={open}>
+      </div>
+      <div>
         <DrawerHeader />
-        <StudentsTable />
-      </Main>
+        <StudentList />
+      </div>
     </Box>
   );
 }
