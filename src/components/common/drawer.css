@@ -8,6 +8,7 @@
 .drawer {
   background-color: var(--main-bg) !important;
   width: 300px;
+  color: white;
 }
 .drawer-close {
   display: none;

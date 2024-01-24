@@ -1,0 +1,65 @@
+.student-registeration {
+  background-color: var(--lighter-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.student-registeration .form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-around;
+  padding: 4px;
+  background-color: transparent;
+}
+.form-card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  margin: 10px;
+}
+.student-registeration .row-data {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  margin: 5px;
+}
+.student-registeration .row-data > div {
+  margin: 7px;
+  font-size: 18px;
+}
+.student-registeration .form-card .textarea {
+  width: 100%;
+  height: 200px !important;
+  border: none;
+  padding: 6px;
+  border-radius: 10px;
+  font-size: 18px;
+  border: 1px var(--main-bg) solid;
+  outline: none;
+}
+.student-registeration .form-card .input {
+  width: 100%;
+  height: 50px !important;
+  border: none !important;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 10px;
+  font-size: 18px !important;
+  border: 1px var(--main-bg) solid !important;
+  outline: none !important;
+}
+label {
+  font-size: 20px;
+}
+.student-registeration .input-container {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgba(255, 0, 111, 0.117);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

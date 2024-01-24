@@ -23,8 +23,9 @@ import {
   ExitToAppSharp,
   People,
 } from "@material-ui/icons";
-import StudentList from "./StudentsList";
+import StudentList from "../StudentsList";
 import { ButtonGroup } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 300;
 
@@ -109,10 +110,11 @@ export default function PersistentDrawerLeft() {
             Home
             <HomeIcon className="m-2" />
           </IconButton>
-
           <IconButton className="drawer-btn" color="inherit">
-            Students
-            <AccountCircleIcon className="m-2" />
+            <Link to="students/addmission" className="link">
+              Students Addmission
+              <AccountCircleIcon className="m-2" />
+            </Link>
           </IconButton>
           <IconButton className="drawer-btn" color="inherit">
             Teachers
@@ -133,6 +135,18 @@ export default function PersistentDrawerLeft() {
             <BookSharp className="m-2" />
           </IconButton>
 
+          <IconButton className="drawer-btn" color="inherit">
+            Announcements
+            <AnnouncementIcon className="m-2" />
+          </IconButton>
+          <IconButton className="drawer-btn" color="inherit">
+            Announcements
+            <AnnouncementIcon className="m-2" />
+          </IconButton>
+          <IconButton className="drawer-btn" color="inherit">
+            Announcements
+            <AnnouncementIcon className="m-2" />
+          </IconButton>
           <IconButton className="drawer-btn" color="inherit">
             Announcements
             <AnnouncementIcon className="m-2" />

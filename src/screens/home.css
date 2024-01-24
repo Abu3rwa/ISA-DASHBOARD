@@ -1,2 +1,45 @@
 .home {
 }
+
+.home h4 {
+  font-weight: 600;
+}
+
+.drawer-list li {
+  list-style: none;
+  margin: 7px;
+  transition: all ease-in-out 0.3s;
+  background-color: var(--light-bg);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 6px;
+  font-size: 18px;
+  border: 1px var(--main-bg) solid;
+}
+.drawer-list li:hover {
+  background-color: var(--main-bg);
+  border-radius: 5px;
+  color: white;
+}
+.home .drawer {
+  height: 100vh;
+  position: fixed;
+  background: var(--light-bg);
+}
+.home .header {
+  height: 80px;
+  background: white;
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+}
+.home .home-body {
+  padding-top: 80px;
+}
+.home .tabs {
+  background: var(--light-bg);
+}
+.home .tabs button {
+  font-size: 17px;
+  font-weight: 600;
+}

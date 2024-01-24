@@ -1,0 +1,44 @@
+.appbar {
+  background-color: var(--main-bg) !important;
+  box-shadow: none !important;
+  height: 50px;
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  color: white !important;
+}
+.appbar .Links {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  flex-direction: row;
+}
+.appbar .Links label {
+  color: white !important;
+}
+.appbar .links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch !important;
+  padding: 5px;
+}
+.appbar .links-container li {
+  margin: 5px;
+  padding: 7px;
+  font-size: 17px;
+  /* width: 200px; */
+  transition: all ease-in-out 1s;
+  border-bottom: 1px rgba(0, 0, 0, 0) solid;
+  text-align: left;
+}
+.appbar .links-container li:hover {
+  border-bottom: 1px black solid;
+}
+.appbar button {
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 20;
+}
