@@ -1,4 +1,5 @@
 .home {
+  padding-top: 70px;
 }
 
 .home h4 {
@@ -27,7 +28,6 @@
   background: var(--light-bg);
 }
 .home .header {
-  height: 80px;
   background: white;
   width: 100vw;
   position: fixed;
@@ -35,7 +35,7 @@
   padding: 0;
 }
 .home .home-body {
-  padding-top: 80px;
+  padding-top: 60px;
 }
 .home .tabs {
   background: var(--light-bg);

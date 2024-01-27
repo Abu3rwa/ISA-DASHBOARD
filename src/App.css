@@ -16,8 +16,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 80px);
-  width: calc(100vw - 300px);
+  height: 80vh;
+  width: 100vw;
   flex-direction: column;
 }
 :root {
@@ -27,12 +27,18 @@
   --ligt-txt: rgba(54, 54, 54, 0.829);
   --main-txt: rgb(30, 34, 32);
   --main-bg: #006b54 !important;
+  /* --main-bg: #006b54 !important; */
   --light-teal: #006b5473 !important;
   --lighter-bg: #f9fafb !important;
   --light-bg: #f9fafb !important;
 }
 .teal {
   color: #006b54 !important;
+}
+.teal-bg {
+  background-color: #006b54 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important ;
 }
 .App-header {
   background-color: #282c34;
@@ -83,6 +89,18 @@
   height: 180px;
   clip-path: circle(50%);
 }
+.align-col-items {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+}
+.align-row-items {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+}
 
 .trans-rose {
   color: rgb(235 82 155 / 62%);
@@ -123,10 +141,19 @@
 .heading {
   text-align: center;
   font-weight: bold;
-  color: #00eb3e;
+  color: #005537;
   margin-top: 50px !important;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .tn {
   color: #d800eb;
+}
+.green {
+  color: #00b60c !important;
+}
+.h5 {
+  font-size: 18px !important;
+}
+.h4 {
+  font-size: 20px !important;
 }

@@ -21,6 +21,9 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import logo from "../../assets/images/school-logo.png";
+import { SearchRounded } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,9 +59,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "25ch",
       "&:focus": {
-        width: "20ch",
+        width: "35ch",
+        backgroundColor: "white",
+        color: "grey",
+        borderRadius: theme.shape.borderRadius,
       },
     },
   },
@@ -80,32 +86,29 @@ export default function MyAppBar() {
 
   return (
     <div sx={{ flexGrow: 1 }} className="appbar">
-      <AppBar position="static">
+      <AppBar elevation={0} position="static">
         <Toolbar className="appbar">
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
-            variant="h6"
+            className="text-white mx-5"
+            variant="h5"
             noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{
+              margin: 1,
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+            }}
           >
+            <Link to="/">
+              <img className="logo mx-5" src={logo} />
+            </Link>
             ISA International School
           </Typography>
-
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Search in the system…"
               inputProps={{ "aria-label": "search" }}
             />
           </Search>

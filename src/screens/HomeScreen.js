@@ -1,16 +1,13 @@
-import "./home.css";
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import logo from "../assets/images/school-logo.png";
-
-import StudentList from "../components/StudentsList";
 
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import "./home.css";
 import HomePageAdminButtons from "../components/common/HomePageAdminButtons";
 
 function CustomTabPanel(props) {
@@ -58,21 +55,6 @@ export default function HomeScreen() {
     <div>
       <Box sx={{ width: "100%" }} className="home">
         <header className="header col-12 p-0">
-          <Typography
-            className="teal"
-            variant="h4"
-            noWrap
-            component="h"
-            sx={{
-              margin: 1,
-              flexGrow: 1,
-              display: { xs: "none", sm: "block" },
-            }}
-          >
-            <img className="logo" src={logo} />
-            ISA International School
-          </Typography>
-
           <Tabs
             className="tabs  "
             value={value}
@@ -87,18 +69,17 @@ export default function HomeScreen() {
         <div className="row col-12 home-body">
           <div className="col-3"></div>
           <div className="col-3 drawer">
-            <CustomTabPanel
-              value={value}
-              index={0}
-              className="drawer-list pt-4"
-            >
+            <CustomTabPanel value={value} index={0} className="drawer-list ">
               <Typography variant="h4" className="tx-dark text-center ">
                 Students Affairs
               </Typography>
               <Link className="link-dark" to="students">
-                <li>All Students </li>
+                <li>Students </li>
               </Link>
-              <Link className="link-dark" to="students-addmission">
+              <Link className="link-dark" to="parents">
+                <li>Parents </li>
+              </Link>
+              <Link className="link-dark" to="parent-info">
                 <li>Student Enrollment </li>
               </Link>
               {/* <Link className="link"></Link> */}
@@ -109,11 +90,7 @@ export default function HomeScreen() {
               <li>New Joinees </li>
               <li>Upgrades </li>
             </CustomTabPanel>
-            <CustomTabPanel
-              value={value}
-              index={1}
-              className="drawer-list pt-4"
-            >
+            <CustomTabPanel value={value} index={1} className="drawer-list ">
               <Typography variant="h4" className="tx-dark text-center m-2">
                 Employees Affairs
               </Typography>
@@ -125,11 +102,7 @@ export default function HomeScreen() {
               <li> training and development</li>
               <li> grievance handling and conflict resolution</li>
             </CustomTabPanel>
-            <CustomTabPanel
-              value={value}
-              index={2}
-              className="drawer-list pt-4"
-            >
+            <CustomTabPanel value={value} index={2} className="drawer-list ">
               <Typography variant="h4" className="tx-dark text-center m-2">
                 Finances
               </Typography>
@@ -144,7 +117,7 @@ export default function HomeScreen() {
             </CustomTabPanel>
           </div>
 
-          <div className="col-9 pt-5  ">
+          <div className="col-9   ">
             <HomePageAdminButtons />
           </div>
         </div>

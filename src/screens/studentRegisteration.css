@@ -12,7 +12,7 @@
   align-items: start;
   justify-content: space-around;
   padding: 4px;
-  background-color: transparent;
+  background-color: white;
 }
 .form-card {
   background-color: white;
@@ -21,13 +21,15 @@
   align-items: stretch;
   justify-content: space-between;
   margin: 10px;
+  padding: 8px;
+  border-radius: 6px;
 }
 .student-registeration .row-data {
   display: flex;
   flex-direction: row;
-  align-items: start;
   justify-content: space-between;
   margin: 5px;
+  align-items: center;
 }
 .student-registeration .row-data > div {
   margin: 7px;
@@ -60,6 +62,4 @@ label {
 .student-registeration .input-container {
   padding: 5px;
   margin: 5px;
-  background-color: rgba(255, 0, 111, 0.117);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

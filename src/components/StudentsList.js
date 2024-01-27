@@ -21,6 +21,7 @@ import {
   RemoveRedEye,
   RemoveRedEyeOutlined,
 } from "@material-ui/icons";
+import Spinner from "./common/Spinner";
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -60,12 +61,7 @@ const StudentList = () => {
   return (
     <>
       {loading ? (
-        <div className="spinner">
-          <CircularProgress color="primary" size={60} />
-          <Typography variant="h5" className="text-center text-dark m-2">
-            Loading... Please wait
-          </Typography>
-        </div>
+        <Spinner />
       ) : (
         <div className="students" style={{ height: "90%", width: "100%" }}>
           {/* <Typography variant="h5" className="text-center text-dark">

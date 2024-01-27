@@ -1,13 +1,20 @@
 .appbar {
   background-color: var(--main-bg) !important;
   box-shadow: none !important;
-  height: 50px;
+  height: 60px;
   display: flex;
-
+  position: fixed;
   justify-content: space-around;
   align-items: center;
   flex-direction: row;
   color: white !important;
+  z-index: 9999;
+  width: 100vw;
+  box-shadow: none !important;
+}
+.appbar .logo {
+  background-color: white;
+  border-radius: 50%;
 }
 .appbar .Links {
   display: flex;

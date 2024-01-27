@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.finances-home-screen {
+  padding: 0;
+  margin: 0;
+}
+.finances-home-screen .header {
+  padding-left: 20px;
+  padding-right: 20px;
+  background: var(--light-bg);
+  width: 100vw;
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.finances-home-screen .finances-container {
+  padding-top: 80px;
+}
+.finances-home-screen .logo {
+  width: 110px;
+  height: 80px;
+  border-radius: 50%;
+  padding: 3px;
+
+  margin-right: 20px;
+}

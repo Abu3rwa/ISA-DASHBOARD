@@ -34,12 +34,12 @@ tr {
 .action-btn {
   font-size: 8px;
 }
-.students .actions .delete {
+.actions .delete {
   color: red;
 }
-.students .actions .details {
+.actions .details {
   color: blue;
 }
-.students .actions .edit {
+.actions .edit {
   color: var(--main-bg);
 }
