@@ -8,6 +8,7 @@ import HomeScreen from "./screens/HomeScreen";
 import StudentRegistrationScreen from "./screens/StudentRegistrationScreen";
 import StudentList from "./components/StudentsList";
 import StudentsDetailsScreen from "./screens/StudentsDetailsScreen";
+import FinancesHomeScreen from "./screens/finances/FinancesHomeScreen";
 import MyAppBar from "./components/common/MyAppBar";
 
 function App() {
@@ -15,21 +16,12 @@ function App() {
     <BrowserRouter>
       {/* <MyAppBar /> */}
       <Routes>
-        <Route
-          path="/student-addmission"
-          exact
-          element={<StudentRegistrationScreen />}
-        />
         <Route path="/" exact element={<HomeScreen />} />
         <Route path="/students" exact element={<StudentList />} />
-        <Route
-          path="/students/addmission"
-          exact
-          element={<StudentRegistrationScreen />}
-        />
+        <Route path="/finances" exact element={<FinancesHomeScreen />} />
         <Route path="/students/:id" exact element={<StudentsDetailsScreen />} />
         <Route
-          path="/students/addmission"
+          path="/students-addmission"
           exact
           element={<StudentRegistrationScreen />}
         />

@@ -5,7 +5,13 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import logo from "../assets/images/school-logo.png";
+
 import StudentList from "../components/StudentsList";
+
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import HomePageAdminButtons from "../components/common/HomePageAdminButtons";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,6 +47,8 @@ function a11yProps(index) {
 }
 
 export default function HomeScreen() {
+  const { t, i18n } = useTranslation();
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -49,8 +57,7 @@ export default function HomeScreen() {
   return (
     <div>
       <Box sx={{ width: "100%" }} className="home">
-        <header className="header">
-          {" "}
+        <header className="header col-12 p-0">
           <Typography
             className="teal"
             variant="h4"
@@ -62,30 +69,39 @@ export default function HomeScreen() {
               display: { xs: "none", sm: "block" },
             }}
           >
+            <img className="logo" src={logo} />
             ISA International School
           </Typography>
-          <Box>
-            <Tabs
-              className="tabs"
-              value={value}
-              onChange={handleChange}
-              aria-label=" "
-            >
-              <Tab label="Students Affairs" {...a11yProps(0)} />
-              <Tab label="Employees Affairs" {...a11yProps(1)} />
-              <Tab label="Finances" {...a11yProps(2)} />
-            </Tabs>
-          </Box>
+
+          <Tabs
+            className="tabs  "
+            value={value}
+            onChange={handleChange}
+            aria-label=" "
+          >
+            <Tab label="Students Affairs" {...a11yProps(0)} />
+            <Tab label="Employees Affairs" {...a11yProps(1)} />
+            <Tab label="Finances" {...a11yProps(2)} />
+          </Tabs>
         </header>
         <div className="row col-12 home-body">
           <div className="col-3"></div>
           <div className="col-3 drawer">
-            <CustomTabPanel value={value} index={0} className="drawer-list">
-              <Typography variant="h4" className="tx-dark text-center m-3">
+            <CustomTabPanel
+              value={value}
+              index={0}
+              className="drawer-list pt-4"
+            >
+              <Typography variant="h4" className="tx-dark text-center ">
                 Students Affairs
               </Typography>
-              <li>Student Enrollment </li>
-              <li>New Admissions </li>
+              <Link className="link-dark" to="students">
+                <li>All Students </li>
+              </Link>
+              <Link className="link-dark" to="students-addmission">
+                <li>Student Enrollment </li>
+              </Link>
+              {/* <Link className="link"></Link> */}
               <li> Classes </li>
               <li>Events </li>
               <li>Fee Due Report </li>
@@ -93,18 +109,27 @@ export default function HomeScreen() {
               <li>New Joinees </li>
               <li>Upgrades </li>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={1} className="drawer-list">
+            <CustomTabPanel
+              value={value}
+              index={1}
+              className="drawer-list pt-4"
+            >
               <Typography variant="h4" className="tx-dark text-center m-2">
                 Employees Affairs
               </Typography>
+              <li>Employees </li>
               <li>Salaries </li>
               <li>Loans </li>
-              <li> recruitment and hiring</li>{" "}
-              <li> attendance and time tracking</li>{" "}
-              <li> training and development</li>{" "}
+              <li> recruitment and hiring</li>
+              <li> attendance and time tracking</li>
+              <li> training and development</li>
               <li> grievance handling and conflict resolution</li>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={2} className="drawer-list">
+            <CustomTabPanel
+              value={value}
+              index={2}
+              className="drawer-list pt-4"
+            >
               <Typography variant="h4" className="tx-dark text-center m-2">
                 Finances
               </Typography>
@@ -120,108 +145,7 @@ export default function HomeScreen() {
           </div>
 
           <div className="col-9 pt-5  ">
-            Welcome to the Android App Development Assistant! I'm here to help
-            you bring your app ideas to life. Whether you're a beginner or an
-            experienced developer, I'll guide you through the entire app
-            development process using React and other relevant frameworks. Feel
-            free to share your app ideas, and together we'll refine them, create
-            a detailed description, and break down the tasks needed for
-            frontend, backend, database, and UI design. I'll provide you with
-            code snippets, explanations, and instructions to help you implement
-            the app feature by feature.Welcome to the Android App Development
-            Assistant! I'm here to help you bring your app ideas to life.
-            Whether you're a beginner or an experienced developer, I'll guide
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            you through the entire app development process using React and other
-            relevant frameworks. Feel free to share your app ideas, and together
-            we'll refine them, create a detailed description, and break down the
-            tasks needed for frontend, backend, database, and UI design. I'll
-            provide you with code snippets, explanations, and instructions to
-            help you implement the app feature by feature.
+            <HomePageAdminButtons />
           </div>
         </div>
       </Box>

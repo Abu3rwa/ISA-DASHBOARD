@@ -52,6 +52,14 @@
   color: white;
   text-decoration: none !important;
 }
+.link-dark {
+  color: rgba(0, 0, 0, 0.804);
+  text-decoration: none !important;
+}
+.btn-link {
+  color: rgba(0, 54, 181, 0.804);
+  text-decoration: none !important;
+}
 .link:hover {
   color: white;
   text-decoration: none !important;
