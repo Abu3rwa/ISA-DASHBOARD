@@ -23,7 +23,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import logo from "../../assets/images/school-logo.png";
 import { SearchRounded } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -73,7 +73,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function MyAppBar() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-
+  const location = useLocation();
+  const homePath = location.pathname.split("/").pop();
+  console.log("homePath: ", homePath);
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -88,21 +90,12 @@ export default function MyAppBar() {
     <div sx={{ flexGrow: 1 }} className="appbar">
       <AppBar elevation={0} position="static">
         <Toolbar className="appbar">
-          <Typography
-            className="text-white mx-5"
-            variant="h5"
-            noWrap
-            sx={{
-              margin: 1,
-              flexGrow: 1,
-              display: { xs: "none", sm: "block" },
-            }}
-          >
+          <h3 className="text-white mx-5">
             <Link to="/">
               <img className="logo mx-5" src={logo} />
             </Link>
             ISA International School
-          </Typography>
+          </h3>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

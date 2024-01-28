@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import {
   TextField,
-  FormControl,
   InputLabel,
   Select,
   MenuItem,
@@ -11,8 +10,8 @@ import {
 import { Person, Email, Phone, Home, Wc } from "@material-ui/icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { axiosInstance } from "../../../config/axiosInstance";
-import Spinner from "../../common/Spinner";
+import { axiosInstance } from "../config/axiosInstance";
+import Spinner from "../components/common/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -86,9 +85,7 @@ const ParentInfoFormation = () => {
         <Spinner />
       ) : (
         <form className={classes.form}>
-          <Typography variant="h4" className="teal mb-4 text-center">
-            Enter Parent Information
-          </Typography>
+          <h4 className="teal mb-4 text-center">Enter Parent Information</h4>
           <TextField
             required
             onChange={(e) => setName(e.target.value)}

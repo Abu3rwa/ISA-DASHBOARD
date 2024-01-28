@@ -10,9 +10,9 @@ import StudentList from "./components/StudentsList";
 import StudentsDetailsScreen from "./screens/StudentsDetailsScreen";
 import FinancesHomeScreen from "./screens/finances/FinancesHomeScreen";
 import MyAppBar from "./components/common/MyAppBar";
-import ParentInfoFormation from "./components/student/forms/ParentInformation";
 import ParentsScreen from "./screens/ParentsScreen";
 import ParentDetails from "./screens/ParentDetails";
+import ParentInfoFormation from "./screens/ParentInformation";
 
 function App() {
   return (
