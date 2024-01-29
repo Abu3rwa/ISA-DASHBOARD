@@ -95,6 +95,20 @@
   margin: 5px !important;
   width: 100% !important;
 }
+
+input[type="search"].dark::-webkit-search-cancel-button {
+  /* filter: invert(1); */
+}
+input[type="search"]::-webkit-search-cancel-button {
+  height: 5em;
+  width: 5em;
+  cursor: pointer;
+  color: red;
+  border-radius: 50em;
+  background-color: rebeccapurple;
+  background-size: contain;
+}
+/* Add custom cancel icon styles here */
 .parents input {
   background-color: var(--light-teal);
   border: none;
@@ -122,4 +136,13 @@
 
   border-radius: 50px;
   margin: 3px;
+}
+.search-result {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  background: white;
+  width: 100%;
 }

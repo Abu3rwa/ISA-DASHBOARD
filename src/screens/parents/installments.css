@@ -1,0 +1,79 @@
+.installments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.installments-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 15px;
+}
+.installments p {
+  color: black;
+  font-size: 18px;
+  margin: 0;
+  padding: 5px;
+  border: 0.1px #cde2de solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.installments-list p:first-child {
+  background-color: white;
+  color: black;
+  font-weight: 600;
+}
+.installments .installments-list .number {
+  background-color: #c7dcd8;
+  color: white;
+  font-weight: 600;
+  padding: 3px;
+  min-width: 50px;
+  border-radius: 6px;
+  color: black;
+  margin: 0;
+}
+.installment-card {
+  padding: 7px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+h5 {
+  margin: 5px 0;
+}
+.installments .totals {
+  display: flex;
+  justify-content: space-between;
+  background: var(--lighter-teal);
+  padding: 4px;
+  color: var(--main-bg);
+  font-weight: 600;
+  border-radius: 5px;
+  align-items: center;
+}
+.installments .totals-container {
+  background: whitesmoke;
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.installments .totals p {
+  background-color: var(--main-bg);
+  color: white;
+  font-weight: 600;
+  padding: 3px;
+  min-width: 50px;
+  border-radius: 6px;
+}

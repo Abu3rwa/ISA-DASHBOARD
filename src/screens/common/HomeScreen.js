@@ -1,5 +1,4 @@
 import SearchIcon from "@mui/icons-material/Search";
-import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -11,6 +10,8 @@ import { Link } from "react-router-dom";
 import "./home.css";
 import HomePageAdminButtons from "../../components/common/HomePageAdminButtons";
 import ParenstsScreen from "../parents/ParentsScreen";
+import StudentssScreen from "../students/studentsScreen";
+import { useState } from "react";
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -47,7 +48,7 @@ function a11yProps(index) {
 export default function HomeScreen() {
   const { t, i18n } = useTranslation();
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -130,7 +131,13 @@ export default function HomeScreen() {
           </div>
 
           <div className="col-9   ">
-            {value === 1 ? <ParenstsScreen /> : <HomePageAdminButtons />}
+            {value === 1 ? (
+              <ParenstsScreen />
+            ) : value == 0 ? (
+              <StudentssScreen />
+            ) : (
+              <HomePageAdminButtons />
+            )}
           </div>
         </div>
       </Box>

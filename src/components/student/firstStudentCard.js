@@ -8,8 +8,9 @@ import EditRounded from "@material-ui/icons/EditRounded";
 import More from "@material-ui/icons/More";
 import Payment from "@material-ui/icons/Payment";
 import { Link } from "react-router-dom";
+import StudentProgressChart from "./AcademicProgress";
 
-function FirstParentCard({ firstParent }) {
+function FirstStudentCard({ firstParent }) {
   const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function FirstParentCard({ firstParent }) {
             Delete
           </Button>
         </div>
-        <h4 className="teal m-3">Parent Details</h4>
+        <h4 className="teal m-3">Student Details</h4>
         <h6 className="tx-dark m-3" color="textSecondary">
           Name: <span className="teal">{firstParent?.name}</span>
         </h6>
@@ -76,39 +77,11 @@ function FirstParentCard({ firstParent }) {
         </h6>
 
         <Card className="m-2 p-2">
-          <h4 className="teal m-3">Tuitions</h4>
-
-          <h6 className="tx-dark m-3" color="textSecondary">
-            Remaining Tuition:{" "}
-            <span className="teal">
-              {paidAndRemainingTuition?.remaining_tuition}
-            </span>
-          </h6>
-          <h6 className="tx-dark m-3" color="textSecondary">
-            Paid Tuition:{" "}
-            <span className="red">
-              {paidAndRemainingTuition?.remaining_tuition}
-            </span>
-          </h6>
-          <div className="actions row-data">
-            <Link to={`/installments/${firstParent?.parent_id}`}>
-              <Button endIcon={<Details />} variant="contained" color="primary">
-                Details
-              </Button>
-            </Link>
-            <Button
-              size="small"
-              variant="contained"
-              color="secondary"
-              endIcon={<Payment />}
-            >
-              Pay
-            </Button>
-          </div>
+          <StudentProgressChart />
         </Card>
       </CardContent>
     </Card>
   );
 }
 
-export default FirstParentCard;
+export default FirstStudentCard;

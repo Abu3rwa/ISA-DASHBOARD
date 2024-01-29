@@ -1,4 +1,10 @@
-import { Card, CardContent, Typography, Button } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  CircularProgress,
+} from "@material-ui/core";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState, useEffect } from "react";
 import "./parentsScreen.css";
@@ -30,10 +36,12 @@ import FirstParentCard from "../../components/parents/FirstParentCard";
 
 const ParentsScreen = () => {
   const [loading, setLoading] = useState(false);
+  const [searching, setSearching] = useState(false);
   const [firstParent, setFirstParent] = useState(null);
 
   const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
   const [parentList, setParentList] = useState([]);
+  const [searchValue, setSearchValue] = useState(0);
 
   useEffect(() => {
     fetchParents();
@@ -51,49 +59,77 @@ const ParentsScreen = () => {
       console.error("Error fetching parent list:", error);
     }
   };
-
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+    if (searchValue.length > 0) {
+      setSearching(true);
+    } else {
+      setSearching(false);
+    }
+    console.log(searchValue.length);
+  };
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        <div className=" parents row">
+        <div className=" parents row" onClick={() => setSearchValue("")}>
           <div className="left">
             <div className="my-3 parents-list-header">
               <h4 className="tx-dark text-center">Parents</h4>
               <div id="search">
                 <SearchIcon className="icon" />
-                <input placeholder="search by name or ID..." type="search" />
+                <input
+                  onChange={handleSearch}
+                  placeholder="search by name or ID..."
+                  type="search"
+                />
               </div>
             </div>{" "}
-            <table component={Paper} className="table" aria-label="Parent List">
-              <thead className="table-header">
-                <TableRow>
-                  <TableCell>No</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Phone</TableCell>
+            <>
+              {searching ? (
+                <div className="search-result">
+                  <h4 className="tx-dark text-center">search resoluts</h4>
 
-                  <TableCell>Actions</TableCell>
-                </TableRow>
-              </thead>
-              <TableBody>
-                {parentList.map((parent) => (
-                  <TableRow key={parent.parent_id} className="parent">
-                    <TableCell>{parent.parent_id}</TableCell>
-                    <TableCell>{parent.name}</TableCell>
-                    <TableCell>{parent.phone}</TableCell>
+                  <div>
+                    <CircularProgress color="primary" size={60} />
+                  </div>
+                </div>
+              ) : (
+                <table
+                  component={Paper}
+                  className="table"
+                  aria-label="Parent List"
+                >
+                  <thead className="table-header">
+                    <TableRow>
+                      <TableCell>No</TableCell>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Phone</TableCell>
 
-                    <TableCell className="actions">
-                      <Link to={`/parent/${parent.parent_id}`}>
-                        <IconButton>
-                          <RemoveRedEye className="action-btn details" />
-                        </IconButton>
-                      </Link>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </table>
+                      <TableCell>Actions</TableCell>
+                    </TableRow>
+                  </thead>
+                  <TableBody>
+                    {parentList.map((parent) => (
+                      <TableRow key={parent.parent_id} className="parent">
+                        <TableCell>{parent.parent_id}</TableCell>
+                        <TableCell>{parent.name}</TableCell>
+                        <TableCell>{parent.phone}</TableCell>
+
+                        <TableCell className="actions">
+                          <Link to={`/parent/${parent.parent_id}`}>
+                            <IconButton>
+                              <RemoveRedEye className="action-btn details" />
+                            </IconButton>
+                          </Link>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </table>
+              )}{" "}
+            </>
           </div>
           <FirstParentCard firstParent={firstParent} />
           {/* <Card className=" right">

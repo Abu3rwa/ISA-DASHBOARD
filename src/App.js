@@ -12,6 +12,7 @@ import ParentInFormation from "./screens/parents/ParentInFormation";
 import ParentDetails from "./screens/parents/ParentDetails";
 import MyAppBar from "./components/common/MyAppBar";
 import ParentsScreen from "./screens/parents/ParentsScreen";
+import InstallmentsScreen from "./screens/parents/Installments";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
         <Route path="/students/:id" exact element={<StudentsDetailsScreen />} />
         <Route path="/parent-info" exact element={<ParentInFormation.js />} />
         <Route path="/parents" exact element={<ParentsScreen />} />
+        <Route
+          path="/installments/:id"
+          exact
+          element={<InstallmentsScreen />}
+        />
         <Route path="/parent/:id" exact element={<ParentDetails />} />
         <Route
           path="/student-info/:id"
