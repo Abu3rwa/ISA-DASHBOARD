@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./studentsDetailsScreen.css";
-import db from "../firebase";
+import db from "../../firebase";
 import {
   CircularProgress,
   List,
@@ -27,7 +27,7 @@ import {
 } from "@material-ui/icons";
 import { doc, getDoc } from "firebase/firestore";
 import { Abc } from "@mui/icons-material";
-import Academics from "../components/student/academics";
+import Academics from "../../components/student/academics";
 
 const StudentsDetailsScreen = () => {
   const location = useLocation();

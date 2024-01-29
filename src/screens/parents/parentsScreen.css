@@ -1,0 +1,125 @@
+.parents {
+  width: 100%;
+  padding: 10px !important;
+  /* padding-top: 55px !important; */
+  margin: 0 !important;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.parents .table {
+  margin: 0 !important;
+  width: 100%;
+}
+.parents .parent-details {
+}
+.parents .parent {
+  list-style: none;
+  margin: 0px;
+  transition: all ease-in-out 0.3s;
+  background-color: var(--light-bg);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 6px;
+  border: none;
+}
+.parents td {
+  list-style: none;
+  margin: 0px;
+  transition: all ease-in-out 0.3s;
+  background-color: var(--light-bg);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 6px;
+  border: none;
+}
+.parents .parent:hover {
+  background-color: var(--light-teal);
+  border-radius: 5px;
+  color: white !important;
+}
+
+.parents .parent td {
+  transition: all ease-in-out 0.3s;
+  text-align: center;
+  font-size: 18px !important;
+  list-style: none;
+  margin: 0px;
+  transition: all ease-in-out 0.3s;
+  background-color: var(--lighter-teal);
+  /* border-radius: 5px; */
+  cursor: pointer;
+  padding: 3px;
+  border: 1px var(--main-bg) solid;
+  border-radius: 0;
+}
+.parents .parent td:hover {
+  transform: scale(1.1);
+}
+
+.parents .parent {
+  width: 100%;
+}
+.parents tbody {
+  width: 100%;
+}
+.parents .left {
+  border-radius: 5px;
+  background-color: var(--light-bg) !important;
+  width: 59%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.parents .right {
+  border-radius: 5px;
+
+  width: 38%;
+  height: fit-content;
+  /* background-color: var(--light-teal) !important; */
+}
+
+.parents .parents-list-header {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  width: 100%;
+}
+.parents .table-header {
+  background-color: coral o !important;
+}
+#search {
+  padding: 5px !important;
+  margin: 5px !important;
+  width: 100% !important;
+}
+.parents input {
+  background-color: var(--light-teal);
+  border: none;
+  padding: 10px !important;
+  width: 80% !important;
+  transition: all ease-in-out 0.4s !important;
+  outline: none;
+  border-radius: 5px;
+  height: 60px;
+  border: 2px var(--light-bg) solid;
+}
+.parents input:focus {
+  background-color: white;
+  border-color: var(--main-bg);
+  color: black !important;
+  border-radius: 8px !important;
+  width: 90% !important;
+}
+.parents .icon {
+  color: var(--light-teal);
+  color: var(--main-bg);
+  width: 50px;
+  height: 50px;
+  transition: all ease-in-out 0.4s !important;
+
+  border-radius: 50px;
+  margin: 3px;
+}

@@ -10,8 +10,8 @@ import {
 import { Person, Email, Phone, Home, Wc } from "@material-ui/icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { axiosInstance } from "../config/axiosInstance";
-import Spinner from "../components/common/Spinner";
+import { axiosInstance } from "../../config/axiosInstance";
+import Spinner from "../../components/common/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ParentInfoFormation = () => {
+const ParentInFormation = () => {
   const [phone, setPhone] = useState(0);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -164,4 +164,4 @@ const ParentInfoFormation = () => {
   );
 };
 
-export default ParentInfoFormation;
+export default ParentInFormation;

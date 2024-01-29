@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Paper, Grid } from "@material-ui/core";
-import Spinner from "../components/common/Spinner";
-import { axiosInstance } from "../config/axiosInstance";
+import Spinner from "../../components/common/Spinner";
+import { axiosInstance } from "../../config/axiosInstance";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

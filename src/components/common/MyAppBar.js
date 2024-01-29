@@ -90,21 +90,13 @@ export default function MyAppBar() {
     <div sx={{ flexGrow: 1 }} className="appbar">
       <AppBar elevation={0} position="static">
         <Toolbar className="appbar">
-          <h3 className="text-white mx-5">
+          <h3 className="text-white mx-2">
             <Link to="/">
               <img className="logo mx-5" src={logo} />
             </Link>
             ISA International School
           </h3>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search in the system…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <h3 className="text-white mx-5">Admin</h3>
         </Toolbar>
       </AppBar>
     </div>

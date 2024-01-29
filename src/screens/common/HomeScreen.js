@@ -1,3 +1,4 @@
+import SearchIcon from "@mui/icons-material/Search";
 import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -8,8 +9,8 @@ import Box from "@mui/material/Box";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import "./home.css";
-import HomePageAdminButtons from "../components/common/HomePageAdminButtons";
-import ParenstsScreen from "../screens/ParentsScreen";
+import HomePageAdminButtons from "../../components/common/HomePageAdminButtons";
+import ParenstsScreen from "../parents/ParentsScreen";
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 

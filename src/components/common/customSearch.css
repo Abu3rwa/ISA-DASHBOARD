@@ -1,0 +1,22 @@
+.search {
+  background-color: rebeccapurple !important;
+  width: 100% !important;
+}
+.search input {
+  background-color: var(--main-bg) !important;
+  padding: 5px !important;
+  border: 2px solid gray !important;
+  width: 85% !important;
+  transition: all ease-in-out 0.4 !important;
+
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 5px !important;
+}
+.search input:focus {
+  background-color: var(--light-bg) !important;
+  color: black !important;
+  border-radius: 8px !important;
+}
+.search .icon {
+}
