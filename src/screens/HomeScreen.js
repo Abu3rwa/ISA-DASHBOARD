@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import "./home.css";
 import HomePageAdminButtons from "../components/common/HomePageAdminButtons";
-
+import ParenstsScreen from "../screens/ParentsScreen";
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -50,20 +50,23 @@ export default function HomeScreen() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    console.log(value);
   };
+
   return (
     <div>
       <Box sx={{ width: "100%" }} className="home">
         <header className="header col-12 p-0">
           <Tabs
-            className="tabs  "
+            className="tabs"
             value={value}
             onChange={handleChange}
             aria-label=" "
           >
             <Tab label="Students Affairs" {...a11yProps(0)} />
-            <Tab label="Employees Affairs" {...a11yProps(1)} />
-            <Tab label="Finances" {...a11yProps(2)} />
+            <Tab label="Parents" {...a11yProps(1)} />
+            <Tab label="Employees Affairs" {...a11yProps(2)} />
+            <Tab label="Finances" {...a11yProps(3)} />
           </Tabs>
         </header>
         <div className="row col-12 home-body">
@@ -91,6 +94,14 @@ export default function HomeScreen() {
               <li>Upgrades </li>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1} className="drawer-list ">
+              {/* <Typography variant="h4" className="tx-dark text-center m-2">
+                Parents
+              </Typography> */}
+              <li>Pay Tuition </li>
+              <li>Installments </li>
+              <li>Meetings </li>
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2} className="drawer-list ">
               <Typography variant="h4" className="tx-dark text-center m-2">
                 Employees Affairs
               </Typography>
@@ -102,7 +113,7 @@ export default function HomeScreen() {
               <li> training and development</li>
               <li> grievance handling and conflict resolution</li>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={2} className="drawer-list ">
+            <CustomTabPanel value={value} index={3} className="drawer-list ">
               <Typography variant="h4" className="tx-dark text-center m-2">
                 Finances
               </Typography>
@@ -118,7 +129,7 @@ export default function HomeScreen() {
           </div>
 
           <div className="col-9   ">
-            <HomePageAdminButtons />
+            {value === 1 ? <ParenstsScreen /> : <HomePageAdminButtons />}
           </div>
         </div>
       </Box>
