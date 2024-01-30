@@ -81,18 +81,14 @@ export default function HomeScreen() {
               <Link className="link-dark" to="students">
                 <li>Students </li>
               </Link>
-              <Link className="link-dark" to="parents">
-                <li>Parents </li>
-              </Link>
+              <li>Attendance </li>
+
               <Link className="link-dark" to="parent-info">
                 <li>Student Enrollment </li>
               </Link>
               {/* <Link className="link"></Link> */}
               <li> Classes </li>
               <li>Events </li>
-              <li>Fee Due Report </li>
-              <li>Attendance </li>
-              <li>New Joinees </li>
               <li>Upgrades </li>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1} className="drawer-list ">

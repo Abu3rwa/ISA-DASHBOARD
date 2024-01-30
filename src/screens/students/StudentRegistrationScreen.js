@@ -59,7 +59,7 @@ const StudentRegistrationScreen = () => {
 
   const [notes, setNotes] = useState("");
   const student = {
-    studentId,
+    parent_id,
     englishName,
     arabicName,
     dateOfBirth,
@@ -68,7 +68,7 @@ const StudentRegistrationScreen = () => {
     email,
     address,
     emergencyContact,
-    enrollmentDate,
+    create_time,
     grade,
     section,
   };
@@ -88,11 +88,21 @@ const StudentRegistrationScreen = () => {
   for (let i = 6; i <= 18; i++) {
     ageList.push(i);
   }
+  const registerStudent = async () => {
+    setLoading(true);
+    try {
+      const response = await axiosInstance.post("/students/create");
+      setParentList(response.data);
+      setFirstParent(response.data[0]);
+
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching parent list:", error);
+    }
+  };
   return (
     <div className="student-registeration pt-5">
-      <Typography variant="h4" className="tx-dark m-4">
-        Student's Registeration
-      </Typography>
+      <h4 className="tx-dark m-4">Student's Registeration</h4>
 
       <FormGroup
         onSubmit={handleSubmit}
@@ -100,9 +110,7 @@ const StudentRegistrationScreen = () => {
       >
         <div className={`${classes.form} row col-6  `}>
           <Card className={`  row col-12 form-card p-3`}>
-            <Typography variant="h4" className="tx-dark m-4">
-              Basic Information
-            </Typography>
+            <h4 className="tx-dark m-4">Basic Information</h4>
             <div className="input-container">
               <label className="label">Arabic Name</label>
               <input
@@ -192,9 +200,7 @@ const StudentRegistrationScreen = () => {
         <div className={`${classes.form} row col-5  `}>
           <Card className={`${classes.form}  col-12 form-card mt-3`}>
             <dev className="form-data">
-              <Typography variant="h5" className="tx-dark mb-3">
-                Contacts Information
-              </Typography>
+              <h5 className="tx-dark mb-3">Contacts Information</h5>
               <div className="input-container">
                 <label htmlFor="email" className="label">
                   Email
@@ -236,9 +242,9 @@ const StudentRegistrationScreen = () => {
             </dev>
           </Card>
           <Card className={`  col-12 form-card p-3`}>
-            <Typography variant="h5" className="tx-dark mb-3">
+            <h5 variant="h5" className="tx-dark mb-3">
               Academic Information
-            </Typography>
+            </h5>
 
             <div className="row-data">
               <div>

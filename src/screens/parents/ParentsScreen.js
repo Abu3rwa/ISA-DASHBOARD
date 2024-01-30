@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  CircularProgress,
-} from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState, useEffect } from "react";
 import "./parentsScreen.css";
@@ -30,17 +24,25 @@ import {
   RemoveRedEyeOutlined,
   SearchOutlined,
 } from "@material-ui/icons";
-import Search from "@mui/icons-material/Search";
-import CustomSearch from "../../components/common/CustomSearch";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchParentDataStart,
+  fetchParentDataSuccess,
+  fetchParentDataFailure,
+} from "../../redux/parentSlice";
 import FirstParentCard from "../../components/parents/FirstParentCard";
 
 const ParentsScreen = () => {
+  const dispatch = useDispatch();
+  const parentList = useSelector((state) => state.parents.parentData);
+  // const loading = useSelector((state) => state.parent.loading);
+  // const error = useSelector((state) => state.parents.error);
   const [loading, setLoading] = useState(false);
   const [searching, setSearching] = useState(false);
   const [firstParent, setFirstParent] = useState(null);
 
   const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
-  const [parentList, setParentList] = useState([]);
+  // const [parentList, setParentList] = useState([]);
   const [searchValue, setSearchValue] = useState(0);
 
   useEffect(() => {
@@ -48,17 +50,21 @@ const ParentsScreen = () => {
   }, []);
 
   const fetchParents = async () => {
-    setLoading(true);
+    dispatch(fetchParentDataStart());
+
     try {
       const response = await axiosInstance.get("/parents/gt-all");
-      setParentList(response.data);
-      setFirstParent(response.data[0]);
+      dispatch(fetchParentDataSuccess(response.data));
+      // setParentList(response.data);
 
-      setLoading(false);
+      setFirstParent(response.data[0]);
     } catch (error) {
+      dispatch(fetchParentDataFailure(error.message));
+
       console.error("Error fetching parent list:", error);
     }
   };
+
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
     if (searchValue.length > 0) {

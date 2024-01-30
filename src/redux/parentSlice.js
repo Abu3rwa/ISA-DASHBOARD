@@ -1,21 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export const parentSlice = createSlice({
+const initialState = {
+  parentData: [],
+  loading: false,
+  error: null,
+};
+const parentSlice = createSlice({
   name: "parent",
-  initialState: {
-    parentData: { phone: "", email: "", name: "", address: "", gender: "" },
-    loading: false,
-    error: false,
-  },
+  initialState,
   reducers: {
-    create: (state, action) => {
-      state.name = action.payload.name;
-      state.email = action.payload.email;
-      state.address = action.payload.address;
-      state.gender = action.payload.gender;
-      state.phone = action.payload.phone;
+    fetchParentDataStart(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchParentDataSuccess(state, action) {
+      state.parentData = action.payload;
+      state.loading = false;
+      state.error = null;
+    },
+    fetchParentDataFailure(state, action) {
+      state.loading = false;
+      state.error = action.payload;
     },
   },
 });
-export const { create } = parentSlice.actions;
+
+export const {
+  fetchParentDataStart,
+  fetchParentDataSuccess,
+  fetchParentDataFailure,
+} = parentSlice.actions;
+
 export default parentSlice.reducer;

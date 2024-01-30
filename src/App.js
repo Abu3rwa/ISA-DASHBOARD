@@ -13,17 +13,30 @@ import ParentDetails from "./screens/parents/ParentDetails";
 import MyAppBar from "./components/common/MyAppBar";
 import ParentsScreen from "./screens/parents/ParentsScreen";
 import InstallmentsScreen from "./screens/parents/Installments";
-
+import LoginScreen from "./screens/admin/LoginScreen";
+import { useSelector } from "react-redux";
 function App() {
+  const token = localStorage.getItem("token");
+
   return (
     <BrowserRouter>
-      <MyAppBar />
+      {token && <MyAppBar />}
       <Routes>
-        <Route path="/" exact element={<HomeScreen />} />
+        <Route
+          path="/"
+          exact
+          element={token ? <HomeScreen /> : <LoginScreen />}
+        />
+        <Route path="/auth" exact element={<LoginScreen />} />
         {/* <Route path="/students" exact element={<StudentList />} /> */}
         <Route path="/finances" exact element={<FinancesHomeScreen />} />
         <Route path="/students/:id" exact element={<StudentsDetailsScreen />} />
-        <Route path="/parent-info" exact element={<ParentInFormation.js />} />
+        <Route path="/parent-info" exact element={<ParentInFormation />} />
+        <Route
+          path="/student-info"
+          exact
+          element={<StudentRegistrationScreen />}
+        />
         <Route path="/parents" exact element={<ParentsScreen />} />
         <Route
           path="/installments/:id"

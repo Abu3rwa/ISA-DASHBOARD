@@ -52,7 +52,7 @@ const InstallmentsScreen = () => {
                 <p> Paid : {lastInstallment.total_paid_tuition}</p>
 
                 <p> Discount: {lastInstallment.total_discount}</p>
-                <p>Remaining: {lastInstallment.remaining_tuition}%</p>
+                <p>Remaining: {lastInstallment.remaining_tuition}</p>
               </div>
             </div>
             <h1 className="col-2 teal">Installment</h1>

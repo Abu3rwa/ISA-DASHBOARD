@@ -69,7 +69,7 @@ function FirstParentCard({ firstParent }) {
           Phone: <span className="teal">{firstParent?.phone}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          <span className="teal">{firstParent?.address}</span>
+          Address: <span className="teal">{firstParent?.address}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
           Gender: <span className="teal">{firstParent?.gender}</span>
@@ -87,7 +87,7 @@ function FirstParentCard({ firstParent }) {
           <h6 className="tx-dark m-3" color="textSecondary">
             Paid Tuition:{" "}
             <span className="red">
-              {paidAndRemainingTuition?.remaining_tuition}
+              {paidAndRemainingTuition?.total_paid_tuition}
             </span>
           </h6>
           <div className="actions row-data">
