@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./login.css";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Container,
@@ -62,7 +63,15 @@ const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const user = { password: password, email: email };
+  const [time, setTime] = useState(new Date());
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
   const classes = useStyles();
 
   return (
@@ -77,6 +86,10 @@ const LoginScreen = () => {
               ISA International School
             </h1>
             <h5 className="tx-dark">Date: {today}</h5>
+            <h5 className="teal mt-4">
+              Time:{" "}
+              {`${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`}
+            </h5>
           </div>
           <CssBaseline />
           <Container maxWidth="xs">

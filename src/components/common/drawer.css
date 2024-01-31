@@ -18,3 +18,8 @@
   display: block;
   width: 300px;
 }
+.settings-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

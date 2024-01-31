@@ -14,7 +14,6 @@ import MyAppBar from "./components/common/MyAppBar";
 import ParentsScreen from "./screens/parents/ParentsScreen";
 import InstallmentsScreen from "./screens/parents/Installments";
 import LoginScreen from "./screens/admin/LoginScreen";
-import { useSelector } from "react-redux";
 function App() {
   const token = localStorage.getItem("token");
 

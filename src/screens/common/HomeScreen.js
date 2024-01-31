@@ -12,6 +12,7 @@ import HomePageAdminButtons from "../../components/common/HomePageAdminButtons";
 import ParenstsScreen from "../parents/ParentsScreen";
 import StudentssScreen from "../students/studentsScreen";
 import { useState } from "react";
+import { Button } from "@material-ui/core";
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -124,6 +125,11 @@ export default function HomeScreen() {
 
               {/* <li>Audits - Financial audit completed for FY20-21</li> */}
             </CustomTabPanel>
+            <div className="row-data settings-container">
+              <Button variant="outlined" color="primary" type="submit">
+                System Settings
+              </Button>
+            </div>
           </div>
 
           <div className="col-9   ">
