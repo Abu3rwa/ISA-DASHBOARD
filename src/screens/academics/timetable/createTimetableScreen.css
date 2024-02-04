@@ -1,0 +1,67 @@
+.timetable {
+  padding-top: 70px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.timetable form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  color: black;
+  font-size: 22px;
+  font-family: math;
+  height: 70vh;
+  justify-content: space-between;
+  background: var(--light-bg);
+}
+
+.timetable form input {
+  background-color: white;
+  border: none;
+  padding: 2px !important;
+  width: fit-content;
+  outline: none;
+  border-radius: 5px;
+  height: 55px;
+  width: 350px;
+  border: 2px var(--main-bg) solid;
+  cursor: pointer;
+}
+.timetable .time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+.timetable .row-data {
+  width: 100%;
+}
+.timetable form select {
+  background: var(--main-bg);
+  padding: 8px;
+  border-radius: 10px;
+  width: 150px;
+  color: white;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+.timetable form select:hover {
+  background: var(--light-blue);
+  border-radius: 4px;
+  color: white;
+}
+.timetable form option {
+  color: white;
+  cursor: pointer;
+}
+.timetable label {
+  font-size: 24px;
+  font-weight: 600;
+}
+.timetable input:focus {
+  width: 350px !important;
+}

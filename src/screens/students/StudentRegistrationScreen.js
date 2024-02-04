@@ -1,21 +1,14 @@
 import "./studentRegisteration.css";
 import React, { useState } from "react";
+import today from "../../uitls/today";
 import { makeStyles } from "@material-ui/core/styles";
 import {} from "@material-ui/core";
-import { CurrencyBitcoin, Discount } from "@mui/icons-material";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-  TextareaAutosize,
-  Button,
-  FormGroup,
-  Card,
-} from "@material-ui/core";
+import { Button, FormGroup, Card } from "@material-ui/core";
+import Spinner from "../../components/common/Spinner";
 import "firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { registerStudentCall } from "../../redux/api_Calls/studentsServices";
 const useStyles = makeStyles((theme) => ({
   form: {
     display: "flex",
@@ -34,272 +27,259 @@ const useStyles = makeStyles((theme) => ({
 const StudentRegistrationScreen = () => {
   const classes = useStyles();
 
-  const [studentId, setStudentId] = useState("");
-  const [englishName, setEnglishName] = useState("");
-  const [arabicName, setArabicName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [gender, setGender] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-
-  const [totalTuition, setTotalTuition] = useState(0);
-  const [paidTuition, setPaidTuition] = useState(0);
-  const [enrollmentDate, setEnrollmentDate] = useState("");
-  const [grade, setGrade] = useState(0);
-  const [section, setSection] = useState("");
-  const [remaining, setRemaining] = useState("");
-  const [dateToPayRemaining, setdateToPayRemaining] = useState("");
-  const [dateOfPaying, setDateOfPaying] = useState("");
+  const loading = useSelector((state) => state.students.loading);
+  // const [english_name, setEnglishName] = useState("Islam Omar");
+  // const [arabic_name, setArabicName] = useState("اسلام عمر");
+  // const [date_of_birth, setDate_of_birth] = useState("");
+  // const [gender, setGender] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [address, setAddress] = useState("");
+  console.log(loading);
+  const [english_name, setEnglishName] = useState("Islam Omar");
+  const [arabic_name, setArabicName] = useState("اسلام عمر");
+  const [date_of_birth, setDate_of_birth] = useState("1990-01-01");
+  const [gender, setGender] = useState("Male");
+  const [phone, setPhone] = useState(1234567890);
+  const [email, setEmail] = useState("example@example.com");
+  const [address, setAddress] = useState("123 Main Street");
+  const [emergency_contact, setEmergencyContact] = useState(98764554433);
+  const [grade, setGrade] = useState(1);
+  const [section, setSection] = useState("International");
   const [note, setNote] = useState("");
-  const [amountPaid, setAmountPaid] = useState("");
-  const [emergencyContact, setEmergencyContact] = useState("");
-  const [discount, setDiscount] = useState(0);
-  const [currency, setCurrency] = useState("");
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const parent_id = parseInt(location.pathname.split("/").pop());
+  let todayDate = new Date(today).getUTCFullYear();
+  let birthdayDate = new Date(date_of_birth).getUTCFullYear();
 
-  const [notes, setNotes] = useState("");
+  const age = parseInt(todayDate) - parseInt(birthdayDate);
   const student = {
-    parent_id,
-    englishName,
-    arabicName,
-    dateOfBirth,
+    english_name,
+    arabic_name,
+    date_of_birth,
     gender,
-    phoneNumber,
+    phone,
     email,
     address,
-    emergencyContact,
-    create_time,
+    emergency_contact,
     grade,
     section,
+    age,
+    enrollment_date: today,
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    registerStudentCall(student, dispatch, parent_id);
   };
-
   const discountsList = [];
 
   for (let i = 0; i <= 30; i++) {
     discountsList.push(i);
   }
 
-  const ageList = [];
-  console.log(student);
-  for (let i = 6; i <= 18; i++) {
-    ageList.push(i);
+  const gradesList = [];
+  console.log(parent_id);
+  console.log(location.pathname);
+  for (let i = 1; i <= 12; i++) {
+    gradesList.push(i);
   }
-  const registerStudent = async () => {
-    setLoading(true);
-    try {
-      const response = await axiosInstance.post("/students/create");
-      setParentList(response.data);
-      setFirstParent(response.data[0]);
 
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching parent list:", error);
-    }
-  };
   return (
-    <div className="student-registeration pt-5">
-      <h4 className="tx-dark m-4">Student's Registeration</h4>
+    <>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="student-registeration pt-5">
+          <h4 className="tx-dark m-4">Student's Registeration</h4>
 
-      <FormGroup
-        onSubmit={handleSubmit}
-        className={`  row col-12 form-container`}
-      >
-        <div className={`${classes.form} row col-6  `}>
-          <Card className={`  row col-12 form-card p-3`}>
-            <h4 className="tx-dark m-4">Basic Information</h4>
-            <div className="input-container">
-              <label className="label">Arabic Name</label>
-              <input
-                className="input"
-                placeholder="Arabic Name"
-                value={arabicName}
-                onChange={(e) => setArabicName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="input-container">
-              <label htmlFor="name" className="label">
-                English Name
-              </label>
-              <input
-                id="name"
-                className="input"
-                placeholder="English Name"
-                value={englishName}
-                onChange={(e) => setEnglishName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="input-container">
-              <label htmlFor="address" className="label">
-                Address
-              </label>
-              <input
-                id="address"
-                className="input"
-                placeholder="Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                required
-              />
-            </div>
-            <div className="row-data">
-              <div>
-                <label className="label">Date of Birth</label>
-                <input
-                  className="input"
-                  placeholder="Date of Birth"
-                  value={dateOfBirth}
-                  onChange={(e) => setDateOfBirth(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="label">Gender</label>
-                <select
-                  className="input"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  required
-                >
-                  <option value="" disabled>
-                    Select Gender
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-              <div>
-                <div>
-                  <label className="label">Age</label>
-                  <select
-                    id="gge"
-                    className="input"
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
-                    required
-                  >
-                    <option value="" disabled>
-                      Age
-                    </option>
-
-                    {ageList.map((years) => (
-                      <option value={`${years}`}>{`${years} years`}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>{" "}
-          </Card>
-        </div>
-        <div className={`${classes.form} row col-5  `}>
-          <Card className={`${classes.form}  col-12 form-card mt-3`}>
-            <dev className="form-data">
-              <h5 className="tx-dark mb-3">Contacts Information</h5>
-              <div className="input-container">
-                <label htmlFor="email" className="label">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  className="input"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>{" "}
-              <div className="row-data">
+          <FormGroup className={`  row col-12 form-container`}>
+            <div className={`${classes.form} row col-6  `}>
+              <Card className={`  row col-12 form-card p-3`}>
+                <h4 className="tx-dark m-4">Basic Information</h4>
                 <div className="input-container">
-                  <label htmlFor="emergencyContact" className="label">
-                    Emergency Contact
+                  <label className="label">Arabic Name</label>
+                  <input
+                    className="input"
+                    placeholder="Arabic Name"
+                    value={arabic_name}
+                    onChange={(e) => setArabicName(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="input-container">
+                  <label htmlFor="name" className="label">
+                    English Name
                   </label>
                   <input
-                    id="emergencyContact"
+                    id="name"
                     className="input"
-                    placeholder="Emergency Contact"
-                    value={emergencyContact}
-                    onChange={(e) => setEmergencyContact(e.target.value)}
-                    required
-                  />
-                </div>{" "}
-                <div>
-                  <label className="label">Phone Number</label>
-                  <input
-                    className="input"
-                    placeholder="Phone Number"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    placeholder="English Name"
+                    value={english_name}
+                    onChange={(e) => setEnglishName(e.target.value)}
                     required
                   />
                 </div>
-              </div>
-            </dev>
-          </Card>
-          <Card className={`  col-12 form-card p-3`}>
-            <h5 variant="h5" className="tx-dark mb-3">
-              Academic Information
-            </h5>
+                <div className="input-container">
+                  <label htmlFor="address" className="label">
+                    Address
+                  </label>
+                  <input
+                    id="address"
+                    className="input"
+                    placeholder="Address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="row-data">
+                  <div className="birthday-container">
+                    <label className="label">Date of Birth</label>
+                    <input
+                      className="input"
+                      placeholder="Date of Birth"
+                      value={date_of_birth}
+                      onChange={(e) => setDate_of_birth(e.target.value)}
+                      required
+                      type="date"
+                    />
+                  </div>
 
-            <div className="row-data">
-              <div>
-                <label className="label">
-                  Section
-                  <small className="text-grey"> nation / international</small>
-                </label>
-                <select
-                  className="input"
-                  value={section}
-                  onChange={(e) => setSection(e.target.value)}
-                  required
-                >
-                  <option value="" disabled>
-                    select section
-                  </option>
-                  <option value="National">National</option>
-                  <option value="Internation">Internation</option>
-                </select>
-              </div>
-              <div>
-                <label className="label">Grade</label>
-                <select
-                  className="input"
-                  value={grade}
-                  onChange={(e) => setGrade(e.target.value)}
-                  required
-                >
-                  <option value="" disabled>
-                    grade
-                  </option>
+                  <div>
+                    <label className="label">Gender</label>
+                    <select
+                      className="input"
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        Select Gender
+                      </option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+                  <div></div>
+                </div>{" "}
+              </Card>
+            </div>
+            <div className={`${classes.form} row col-5  `}>
+              <Card className={`${classes.form}  col-12 form-card mt-3`}>
+                <dev className="form-data">
+                  <h5 className="tx-dark mb-3">Contacts Information</h5>
+                  <div className="input-container">
+                    <label htmlFor="email" className="label">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      className="input"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>{" "}
+                  <div className="row-data">
+                    <div className="input-container">
+                      <label htmlFor="emergency_contact" className="label">
+                        Emergency Contact
+                      </label>
+                      <input
+                        id="emergency_contact"
+                        className="input"
+                        placeholder="Emergency Contact"
+                        value={emergency_contact}
+                        onChange={(e) => setEmergencyContact(e.target.value)}
+                        required
+                      />
+                    </div>{" "}
+                    <div>
+                      <label className="label">Phone Number</label>
+                      <input
+                        className="input"
+                        placeholder="Phone Number"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+                </dev>
+              </Card>
+              <Card className={`  col-12 form-card p-3`}>
+                <h5 variant="h5" className="tx-dark mb-3">
+                  Academic Information
+                </h5>
 
-                  {ageList.map((years) => (
-                    <option value={`${years}`}>{`${years} years`}</option>
-                  ))}
-                </select>
-              </div>{" "}
-            </div>
-            <div className="align-row-items mt-2 ">
-              <Link className="link" to="#">
-                <Button variant="contained" color="secondary" className="h5">
-                  Register Student
-                </Button>
-              </Link>
-              <Button
-                className="h5 teal-bg"
-                type="submit"
-                variant="outlined"
-                color="primary"
-              >
-                Pay Fees
-              </Button>
-            </div>
-          </Card>
-          {/* <Card className={`${classes.form}  col-12 form-card mt-3`}>
+                <div className="row-data">
+                  <div>
+                    <label className="label">
+                      Section
+                      <small className="text-grey">
+                        {" "}
+                        nation / international
+                      </small>
+                    </label>
+                    <select
+                      className="input"
+                      value={section}
+                      onChange={(e) => setSection(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        select section
+                      </option>
+                      <option value="National">National</option>
+                      <option value="Internation">Internation</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="label">Grade</label>
+                    <select
+                      className="input"
+                      value={grade}
+                      onChange={(e) => setGrade(e.target.value)}
+                      required
+                    >
+                      <option value="" disabled>
+                        grade
+                      </option>
+
+                      {gradesList.map((grade) => (
+                        <option
+                          key={grade}
+                          value={`${grade}`}
+                        >{`Grade: ${grade}`}</option>
+                      ))}
+                    </select>
+                  </div>{" "}
+                </div>
+                <div className="align-row-items mt-2 ">
+                  <Link className="link" to="#">
+                    <Button
+                      onClick={handleSubmit}
+                      variant="contained"
+                      color="secondary"
+                      className="h5"
+                    >
+                      Register Student
+                    </Button>
+                  </Link>
+                  <Button
+                    className="h5 teal-bg"
+                    type="submit"
+                    variant="outlined"
+                    color="primary"
+                  >
+                    Pay Fees
+                  </Button>
+                </div>
+              </Card>
+              {/* <Card className={`${classes.form}  col-12 form-card mt-3`}>
             <dev onSubmit={handleSubmit} className="form-data">
               <Typography variant="h5" className="tx-dark mb-3">
                 Finantial Information
@@ -340,7 +320,7 @@ const StudentRegistrationScreen = () => {
                     type="number"
                     className="input"
                     placeholder="Total Tuition"
-                    value={dateOfBirth}
+                    value={date_of_birth}
                     onChange={(e) => setTotalTuition(e.target.value)}
                     required
                   />
@@ -351,7 +331,7 @@ const StudentRegistrationScreen = () => {
                     type="number"
                     className="input"
                     placeholder="Paid Tuition"
-                    value={dateOfBirth}
+                    value={date_of_birth}
                     onChange={(e) => setPaidTuition(e.target.value)}
                     required
                   />
@@ -374,9 +354,11 @@ const StudentRegistrationScreen = () => {
               </Button>
             </div>
           </Card> */}
+            </div>
+          </FormGroup>
         </div>
-      </FormGroup>
-    </div>
+      )}
+    </>
   );
 };
 

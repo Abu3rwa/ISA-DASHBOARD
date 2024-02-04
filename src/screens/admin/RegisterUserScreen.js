@@ -36,19 +36,14 @@ const useStyles = makeStyles((theme) => ({
 
   titleContailer: {
     position: "absolute",
-    top: "10px",
+    top: "20px",
     left: "30px",
   },
-  note: {
-    position: "absolute",
-    top: "10px",
-    right: "30px",
-    color: "red",
-  },
+
   logo: {
     marginRight: theme.spacing(1),
-    height: "150px",
-    width: "150px",
+    height: "70px",
+    width: "70px",
     // background: "white",
   },
   form: {
@@ -61,12 +56,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginScreen = () => {
+const RegisterUserScreen = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.user.loading);
   const token = useSelector((state) => state.user.token);
   let error = useSelector((state) => state.user.error);
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const user = { password: password, email: email };
   const [time, setTime] = useState(new Date());
@@ -80,18 +76,14 @@ const LoginScreen = () => {
   }, []);
   const classes = useStyles();
   const weekDay = time.toDateString().split(" ")[0];
-  console.log(user);
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        <div className={`${classes.root} teal`}>
+        <div className={`${classes.root} teal pt-5`}>
+          <h1 className={`${classes.title} teal`}> ISA International School</h1>
           <div className={classes.titleContailer}>
-            <h1 className={`${classes.title} teal`}>
-              {" "}
-              ISA International School
-            </h1>
             <h3 className="tx-dark mt-5">Date: {today}</h3>
             <h3
               className={` mt-5 time ${
@@ -105,9 +97,7 @@ const LoginScreen = () => {
                 .pop()}`}
             </h3>
           </div>
-          <h2 className={classes.note}>
-            {weekDay == "Fri" || (weekDay == "Sat" && <>Weekend Holiday</>)}
-          </h2>
+
           <CssBaseline />
           <Container maxWidth="xs">
             <div className={classes.header}>
@@ -125,10 +115,23 @@ const LoginScreen = () => {
               }}
             >
               <h1 className={`${classes.title}  text-center  tx-dark`}>
-                {" "}
-                Login
+                User Registeration
               </h1>
               <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value)}
+                    className={classes.input}
+                    variant="outlined"
+                    fullWidth
+                    type="text"
+                    required
+                    InputProps={{
+                      startAdornment: <Email className="m-2" />,
+                    }}
+                  />
+                </Grid>
                 <Grid item xs={12}>
                   <TextField
                     placeholder="Email"
@@ -180,4 +183,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterUserScreen;

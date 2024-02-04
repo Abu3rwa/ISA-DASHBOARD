@@ -41,7 +41,6 @@ const ParentsScreen = () => {
   const [searching, setSearching] = useState(false);
   const [firstParent, setFirstParent] = useState(null);
 
-  const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
   // const [parentList, setParentList] = useState([]);
   const [searchValue, setSearchValue] = useState(0);
 
@@ -124,8 +123,9 @@ const ParentsScreen = () => {
                         <TableCell>{parent.phone}</TableCell>
 
                         <TableCell className="actions">
-                          <Link to={`/parent/${parent.parent_id}`}>
-                            <IconButton>
+                          <Link to="#">
+                            {/* <Link to={`/parent/${parent.parent_id}`}> */}
+                            <IconButton onClick={() => setFirstParent(parent)}>
                               <RemoveRedEye className="action-btn details" />
                             </IconButton>
                           </Link>
@@ -138,78 +138,6 @@ const ParentsScreen = () => {
             </>
           </div>
           <FirstParentCard firstParent={firstParent} />
-          {/* <Card className=" right">
-            <CardContent>
-              <div className="actions row-data">
-                <Button variant="outlined" color="primary" endIcon={<More />}>
-                  More
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  endIcon={<EditRounded />}
-                >
-                  Edit{" "}
-                </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  endIcon={<Delete />}
-                >
-                  Delete
-                </Button>
-              </div>
-              <h4 className="teal m-3">Parent Details</h4>
-              <h6 className="tx-dark m-3" color="textSecondary">
-                Name: <span className="teal">{firstParent?.name}</span>
-              </h6>
-              <h6 className="tx-dark m-3" color="textSecondary">
-                Email: <span className="teal">{firstParent?.email}</span>
-              </h6>
-              <h6 className="tx-dark m-3" color="textSecondary">
-                Phone: <span className="teal">{firstParent?.phone}</span>
-              </h6>
-              <h6 className="tx-dark m-3" color="textSecondary">
-                <span className="teal">{firstParent?.address}</span>
-              </h6>
-              <h6 className="tx-dark m-3" color="textSecondary">
-                Gender: <span className="teal">{firstParent?.gender}</span>
-              </h6>
-
-              <Card className="m-2 p-2">
-                <h4 className="teal m-3">Tuitions</h4>
-
-                <h6 className="tx-dark m-3" color="textSecondary">
-                  Remaining Tuition:{" "}
-                  <span className="teal">
-                    {paidAndRemainingTuition?.remaining_tuition}
-                  </span>
-                </h6>
-                <h6 className="tx-dark m-3" color="textSecondary">
-                  Paid Tuition:{" "}
-                  <span className="red">
-                    {paidAndRemainingTuition?.remaining_tuition}
-                  </span>
-                </h6>
-                <div className="actions row-data">
-                  <Button
-                    endIcon={<Details />}
-                    variant="contained"
-                    color="primary"
-                  >
-                    Details
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    endIcon={<Payment />}
-                  >
-                    Pay
-                  </Button>
-                </div>
-              </Card>
-            </CardContent>
-          </Card> */}
         </div>
       )}
     </>

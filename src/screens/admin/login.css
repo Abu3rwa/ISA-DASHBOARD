@@ -1,49 +1,14 @@
-.watch {
-  width: 200px;
-  height: 200px;
-  background-color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.time {
+  color: white;
+  padding: 4px;
+  border-radius: 5px;
+  width: fit-content;
+  text-align: center;
+  font-weight: 600;
 }
-
-.watch-face {
-  position: relative;
-  width: 80%;
-  height: 80%;
-  border-radius: 50%;
-  background-color: #4effff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.on-time {
+  background: rgb(0, 155, 49);
 }
-
-.hand {
-  position: absolute;
-  background-color: #000;
-  transform-origin: bottom center;
-}
-
-.hour {
-  width: 6px;
-  height: 60px;
-}
-
-.minute {
-  width: 4px;
-  height: 80px;
-}
-
-.second {
-  width: 2px;
-  height: 90px;
-  background-color: #ff0000;
-}
-
-.center-circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #000;
+.late {
+  background: red;
 }

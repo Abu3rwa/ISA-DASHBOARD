@@ -14,7 +14,7 @@ function FirstParentCard({ firstParent }) {
 
   useEffect(() => {
     fetchPaidAndRemainingTuition();
-  }, []);
+  }, [firstParent]);
 
   const fetchPaidAndRemainingTuition = async () => {
     try {

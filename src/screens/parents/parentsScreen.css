@@ -109,7 +109,7 @@ input[type="search"]::-webkit-search-cancel-button {
   background-size: contain;
 }
 /* Add custom cancel icon styles here */
-.parents input {
+input {
   background-color: var(--light-teal);
   border: none;
   padding: 10px !important;
@@ -120,14 +120,14 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 60px;
   border: 2px var(--light-bg) solid;
 }
-.parents input:focus {
+input:focus {
   background-color: white;
   border-color: var(--main-bg);
   color: black !important;
   border-radius: 8px !important;
-  width: 90% !important;
+  width: 90%;
 }
-.parents .icon {
+.icon {
   color: var(--light-teal);
   color: var(--main-bg);
   width: 50px;

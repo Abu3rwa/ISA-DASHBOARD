@@ -1,0 +1,58 @@
+.user-settings {
+  margin: 0;
+  padding: 0;
+  padding-top: 70px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(100vh - 60px);
+}
+.user-settings .table {
+  margin: 10px;
+  width: 70vw;
+}
+.user-settings thead {
+}
+.user-settings table th {
+  font-size: 22px;
+
+  text-align: center;
+}
+.user-settings .users-table thead th {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+}
+.user-settings table .actions {
+  transition: all ease-in-out 0.5s;
+  /* padding: 5px; */
+  border-radius: 5px;
+}
+
+.user-settings .form {
+  width: 120px;
+  background: var(--lighter-teal);
+  padding: 2px;
+  border-radius: 7px;
+  margin: 0 9px;
+  color: black;
+  font-family: cursive;
+  font-size: 17px;
+}
+.user-settings .form label,
+option {
+  color: black;
+  font-family: cursive;
+  font-size: 17px;
+}
+.user-settings .add-user-btn {
+  position: absolute;
+  left: 16px;
+  width: fit-content;
+  font-weight: 600;
+  background: white;
+  color: var(--main-bg);
+  border: 1px var(--main-bg) solid;
+}

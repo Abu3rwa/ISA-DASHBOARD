@@ -21,6 +21,7 @@
   justify-content: space-between;
   margin: 10px;
   padding: 8px;
+  position: relative;
   border-radius: 6px;
 }
 .student-registeration .row-data {
@@ -61,4 +62,16 @@ label {
 .student-registeration .input-container {
   padding: 5px;
   margin: 5px;
+}
+.student-registeration .birthday-container {
+}
+.date-picker-container {
+  position: relative;
+}
+
+.custom-date-picker {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: relative;
+  z-index: 999990;
 }

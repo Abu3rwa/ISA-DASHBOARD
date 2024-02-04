@@ -26,12 +26,17 @@
   --dark-rose: rgb(56 10 47);
   --ligt-txt: rgba(54, 54, 54, 0.829);
   --main-txt: rgb(30, 34, 32);
-  --main-bg: #006b54 !important;
+  --main-bg: #033c73 !important;
   /* --main-bg: #006b54 !important; */
-  --light-teal: #006b5473 !important;
-  --lighter-teal: #8cbcb26e !important;
+  /* --main-bg: #006b54 !important; */
+  /* --light-teal: #006b5473 !important; */
+  --light-teal: #0076ba60 !important;
+  /* --lighter-teal: #8cbcb26e !important; */
+  --lighter-teal: #0076ba41 !important;
   --lighter-bg: #f9fafb !important;
   --light-bg: #f9fafb !important;
+  --light-blue: #0076ba !important;
+  /* --main-blue: #033c73 !important; */
 }
 .teal {
   color: #006b54 !important;
@@ -164,4 +169,22 @@
 }
 .h4 {
   font-size: 20px !important;
+}
+.search-input {
+  background-color: var(--light-teal);
+  border: none;
+  padding: 10px !important;
+  width: 80% !important;
+  transition: all ease-in-out 0.4s !important;
+  outline: none;
+  border-radius: 5px;
+  height: 60px;
+  border: 2px var(--light-bg) solid;
+}
+.search-input:focus {
+  background-color: white;
+  border-color: var(--main-bg);
+  color: black !important;
+  border-radius: 8px !important;
+  width: 90% !important;
 }

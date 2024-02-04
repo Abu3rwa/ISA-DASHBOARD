@@ -1,10 +1,3 @@
-import React from "react";
-import "./bootstrap.min.css";
-import { Provider } from "react-redux";
-import ReactDOM from "react-dom/client";
-
-import App from "./App";
-import store from "./redux/store";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
@@ -17,7 +10,7 @@ i18n
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: "../public/locales/{{lng}}/translations.json",
+      loadPath: "../../public/locales/{{lng}}/translations.json",
     },
     react: { useSuspense: false },
 
@@ -35,9 +28,4 @@ i18n
       caches: ["cookie"],
     },
   });
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+export default i18n;

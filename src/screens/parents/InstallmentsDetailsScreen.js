@@ -6,7 +6,7 @@ import "./installments.css";
 import Spinner from "../../components/common/Spinner";
 import { axiosInstance } from "../../config/axiosInstance";
 
-const InstallmentsScreen = () => {
+const InstallmentsDetailsScreen = () => {
   const location = useLocation();
   const parentId = location.pathname.split("/").pop();
   const [installments, setInstallments] = useState([]);
@@ -130,4 +130,4 @@ const InstallmentsScreen = () => {
   );
 };
 
-export default InstallmentsScreen;
+export default InstallmentsDetailsScreen;

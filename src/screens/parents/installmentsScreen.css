@@ -1,0 +1,35 @@
+.installments-container {
+  width: 90vw;
+  padding: 0;
+  margin: 0;
+}
+.installments-container .table {
+  background: var(--lighter-teal);
+  margin: 10px;
+  width: 70%;
+}
+.installments-container thead {
+  background: white;
+  border: 1px gray solid;
+}
+.installments-container td {
+  font-size: 18px;
+  border: 1px gray solid;
+  font-family: math;
+  text-align: center;
+}
+.installments-container thead td {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+}
+.installments-container table .actions {
+  transition: all ease-in-out 0.5s;
+  /* padding: 5px; */
+  border-radius: 5px;
+}
+.installments-container table .actions:hover {
+  background: white;
+
+  transform: scale(1.3);
+}

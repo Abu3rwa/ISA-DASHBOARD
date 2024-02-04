@@ -25,26 +25,26 @@ const ExpenditureBarChart = () => {
   };
 
   const pieChartData = {
-    labels: ["Tuition Fees", "Transportation Fees", "Other Fees"],
+    labels: ["Income: 600000", "Expenses: 200000"],
     datasets: [
       {
-        data: [60, 25, 15],
-        backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB"],
+        data: [600000, 200000],
+        backgroundColor: ["green", "red"],
       },
     ],
   };
 
   return (
-    <div className={`${classes.parent} finances-container`}>
+    <div className={`${classes.parent} finances-container row`}>
       <div className={`${classes.container} row col-12 p-3`}>
-        <div className={`${classes.chartContainer} col-5`}>
+        <div className={`${classes.chartContainer} col-7`}>
           <Typography variant="h6" gutterBottom className="tx-dark">
             Fee Distribution
           </Typography>
           <Pie data={pieChartData} />
         </div>
 
-        <div className={`${classes.chartContainer} col-5`}>
+        <div className={`${classes.chartContainer} col-4`}>
           <Typography variant="h6" gutterBottom className="tx-dark">
             Monthly Revenue and Expenses
           </Typography>
@@ -55,14 +55,6 @@ const ExpenditureBarChart = () => {
   );
 };
 const useStyles = makeStyles((theme) => ({
-  container: {
-    width: "100vw",
-    display: "flex",
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: theme.spacing(4),
-  },
   parent: {
     flexDirection: "column",
     padding: theme.spacing(0),

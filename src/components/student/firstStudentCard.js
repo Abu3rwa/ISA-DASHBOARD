@@ -9,27 +9,13 @@ import More from "@material-ui/icons/More";
 import Payment from "@material-ui/icons/Payment";
 import { Link } from "react-router-dom";
 import StudentProgressChart from "./AcademicProgress";
+import { ArrowDownward, ArrowUpward, Update } from "@material-ui/icons";
+import {
+  downgradeStudent,
+  upgradeStudent,
+} from "../../redux/api_Calls/studentsServices";
 
-function FirstStudentCard({ firstParent }) {
-  const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
-
-  useEffect(() => {
-    fetchPaidAndRemainingTuition();
-  }, []);
-
-  const fetchPaidAndRemainingTuition = async () => {
-    try {
-      const response = await axiosInstance.get(
-        "installments/gt-paid-remaining-tuition/" + 2
-      );
-      setPaidAndRemainingTuition(response.data);
-
-      //   setLoading(false);
-    } catch (error) {
-      console.error("Error paid and remaining tuition:", error);
-    }
-  };
-
+function FirstStudentCard({ firstStudent }) {
   return (
     <Card className=" right">
       <CardContent>
@@ -61,19 +47,23 @@ function FirstStudentCard({ firstParent }) {
         </div>
         <h4 className="teal m-3">Student Details</h4>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Name: <span className="teal">{firstParent?.name}</span>
+          English Name:{" "}
+          <span className="teal">{firstStudent?.english_name}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Email: <span className="teal">{firstParent?.email}</span>
+          Arabic Name: <span className="teal">{firstStudent?.arabic_name}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Phone: <span className="teal">{firstParent?.phone}</span>
+          Grade: <span className="teal">{firstStudent?.grade}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          <span className="teal">{firstParent?.address}</span>
+          Phone: <span className="teal">{firstStudent?.phone}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Gender: <span className="teal">{firstParent?.gender}</span>
+          <span className="teal">{firstStudent?.address}</span>
+        </h6>
+        <h6 className="tx-dark m-3" color="textSecondary">
+          Gender: <span className="teal">{firstStudent?.gender}</span>
         </h6>
 
         <Card className="m-2 p-2">

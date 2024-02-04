@@ -11,18 +11,21 @@ import Spinner from "../../components/common/Spinner";
 import { Link } from "react-router-dom";
 import { RemoveRedEye } from "@material-ui/icons";
 import FirstStudentCard from "../../components/student/firstStudentCard";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchStudents } from "../../redux/api_Calls/studentsServices";
 const StudentssScreen = () => {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [firstParent, setFirstParent] = useState(null);
 
-  const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
-  const [parentList, setParentList] = useState([]);
+  const students = useSelector((state) => state.students.allStudents);
+  // const parentList = useSelector((state) => state.students.);
+  const [firstStudent, setFirstStudent] = useState(null);
   const [searching, setSearching] = useState(0);
   const [serchValue, setSearchValue] = useState(0);
-
   useEffect(() => {
-    fetchParents();
+    FetchStudents(dispatch);
   }, []);
+  console.log(firstStudent);
   const handleSearch = (e) => {
     if (e.target.value != "") {
       setSearching(true);
@@ -30,18 +33,6 @@ const StudentssScreen = () => {
       setSearching(false);
     }
     console.log(e.target.value);
-  };
-  const fetchParents = async () => {
-    setLoading(true);
-    try {
-      const response = await axiosInstance.get("/parents/gt-all");
-      setParentList(response.data);
-      setFirstParent(response.data[0]);
-
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching parent list:", error);
-    }
   };
 
   return (
@@ -52,7 +43,7 @@ const StudentssScreen = () => {
         <div className=" parents row">
           <div className="left">
             <div className="my-3 parents-list-header">
-              <h4 className="text-grey text-center">Students</h4>
+              <h2 className="text-grey text-center tx-dark">Students</h2>
               <div id="search">
                 <SearchIcon className="icon" />
                 <input
@@ -75,26 +66,27 @@ const StudentssScreen = () => {
                 >
                   <thead className="table-header">
                     <TableRow>
-                      <TableCell>No</TableCell>
-                      <TableCell>Name</TableCell>
+                      <TableCell>Arabic Name</TableCell>
+                      <TableCell>English Name</TableCell>
                       <TableCell>Phone</TableCell>
 
                       <TableCell>Actions</TableCell>
                     </TableRow>
                   </thead>
                   <TableBody>
-                    {parentList.map((parent) => (
-                      <TableRow key={parent.parent_id} className="parent">
-                        <TableCell>{parent.parent_id}</TableCell>
-                        <TableCell>{parent.name}</TableCell>
-                        <TableCell>{parent.phone}</TableCell>
+                    {students.map((student) => (
+                      <TableRow key={student.id} className="parent">
+                        {/* <TableCell>{student.parent_id}</TableCell> */}
+                        <TableCell>{student.arabic_name}</TableCell>
+                        <TableCell>{student.english_name}</TableCell>
+                        <TableCell>{student.phone}</TableCell>
 
                         <TableCell className="actions">
-                          <Link to={`/parent/${parent.parent_id}`}>
-                            <IconButton>
-                              <RemoveRedEye className="action-btn details" />
-                            </IconButton>
-                          </Link>
+                          {/* <Link to={`/student/${student.id}`}> */}
+                          <IconButton onClick={() => setFirstStudent(student)}>
+                            <RemoveRedEye className="action-btn details" />
+                          </IconButton>
+                          {/* </Link> */}
                         </TableCell>
                       </TableRow>
                     ))}
@@ -103,7 +95,7 @@ const StudentssScreen = () => {
               )}
             </>
           </div>
-          <FirstStudentCard firstParent={firstParent} />
+          <FirstStudentCard firstStudent={students[0]} />
         </div>
       )}
     </>
