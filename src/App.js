@@ -1,9 +1,4 @@
-import { useTranslation } from "react-i18next";
-import "./App.css";
 import { useEffect, useState } from "react";
-import "./bootstrap.min.css";
-
-import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/common/HomeScreen";
 import FinancesHomeScreen from "./screens/finances/FinancesHomeScreen";
@@ -18,25 +13,29 @@ import InstallmentsScreen from "./screens/parents/InstallmentsScreen";
 import LoginScreen from "./screens/admin/LoginScreen";
 import UserManagementScreen from "./screens/admin/UserManagementScreen";
 import RegisterUserScreen from "./screens/admin/RegisterUserScreen";
+import cookies from "js-cookie";
+import i18next from "i18next";
 import CreateTimeTabeScreen from "./screens/academics/timetable/CreateTimeTabeScreen";
+import "./App.css";
+import "./bootstrap.min.css";
+import "./index.css";
 function App() {
+  // const currentLanguageCode = localStorage.getItem("i18nextLng") || "ar";
+
   const token = localStorage.getItem("token");
-  const { t, i18n } = useTranslation();
-  const [setter, setSetter] = useState("");
-  useEffect(() => {
-    const lng = navigator.language;
-    i18n.changeLanguage(lng);
-  }, [setter]);
-  const changeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
-    setSetter(i18n.language);
-    console.log(i18n.language);
+  const [lan, setlan] = useState("");
+  console.log("cookies: ", cookies.get("i18next"));
+  useEffect(() => {}, [setlan]);
+  const handleChangeLanuage = (code, c_code) => {
+    i18next.changeLanguage(code);
+    setlan(code);
+    localStorage.setItem("i18nextLng", code);
+    localStorage.setItem("c-code", c_code);
+    window.location.reload();
   };
-  const [value, setValue] = useState(0);
-  const lng = navigator.language;
   return (
     <BrowserRouter>
-      {token && <MyAppBar changeLanguage={changeLanguage} />}
+      {token && <MyAppBar handleChangeLanuage={handleChangeLanuage} />}
       <Routes>
         <Route
           path="/"

@@ -9,13 +9,15 @@ import More from "@material-ui/icons/More";
 import Payment from "@material-ui/icons/Payment";
 import { Link } from "react-router-dom";
 import StudentProgressChart from "./AcademicProgress";
-import { ArrowDownward, ArrowUpward, Update } from "@material-ui/icons";
+import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import {
   downgradeStudent,
   upgradeStudent,
 } from "../../redux/api_Calls/studentsServices";
+import { useTranslation } from "react-i18next";
 
 function FirstStudentCard({ firstStudent }) {
+  const { t } = useTranslation();
   return (
     <Card className=" right">
       <CardContent>
@@ -24,51 +26,68 @@ function FirstStudentCard({ firstStudent }) {
             size="small"
             variant="outlined"
             color="primary"
-            endIcon={<More />}
+            endIcon={<More className="me-2" />}
           >
-            More
+            {t("more")}
           </Button>
           <Button
             size="small"
             variant="contained"
             color="primary"
-            endIcon={<EditRounded />}
+            endIcon={<EditRounded className="me-2" />}
           >
-            Edit{" "}
+            {t("edit")}{" "}
           </Button>
           <Button
             size="small"
             variant="contained"
             color="secondary"
-            endIcon={<Delete />}
+            endIcon={<Delete className="me-2" />}
           >
-            Delete
+            {t("delete")}
           </Button>
         </div>
-        <h4 className="teal m-3">Student Details</h4>
+        <h4 className="teal m-3">{t("studentDetails")}</h4>
         <h6 className="tx-dark m-3" color="textSecondary">
-          English Name:{" "}
-          <span className="teal">{firstStudent?.english_name}</span>
+          {t("englishName")} :
+          <span className="blue">{firstStudent?.english_name}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Arabic Name: <span className="teal">{firstStudent?.arabic_name}</span>
+          {t("arabicName")} :
+          <span className="blue">{firstStudent?.arabic_name}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Grade: <span className="teal">{firstStudent?.grade}</span>
+          {t("grade")} : <span className="blue">{firstStudent?.grade}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Phone: <span className="teal">{firstStudent?.phone}</span>
+          {t("phone")} : <span className="blue">{firstStudent?.phone}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          <span className="teal">{firstStudent?.address}</span>
+          {t("address")}:<span className="blue">{firstStudent?.address}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Gender: <span className="teal">{firstStudent?.gender}</span>
+          {t("gender")} : <span className="blue">{firstStudent?.gender}</span>
         </h6>
 
-        <Card className="m-2 p-2">
-          <StudentProgressChart />
-        </Card>
+        <div className="actions row-data">
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            endIcon={<ArrowUpward className="me-2" />}
+          >
+            {t("upgrade")}{" "}
+          </Button>
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            endIcon={<ArrowDownward className="me-2" />}
+          >
+            {t("downgrade")}
+          </Button>
+        </div>
+        {/* <StudentProgressChart /> */}
       </CardContent>
     </Card>
   );

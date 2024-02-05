@@ -5,14 +5,15 @@ import React, { useState, useEffect } from "react";
 import "./employeeManagement.css";
 import Details from "@material-ui/icons/Details";
 import { Report } from "@material-ui/icons";
+import { t } from "i18next";
 
 const EmployeeManagement = () => {
   // Sample data for the chart
   const handleSearch = () => {};
   return (
     <div className="employee-management">
-      <div className="my-3 parents-list-header">
-        <h4 className="tx-dark text-center">Employee</h4>
+      <div className=" parents-list-header">
+        <h2 className="tx-dark text-center">{t("employees")}</h2>
         <div id="search">
           <SearchIcon className="icon" />
           <input
@@ -25,10 +26,10 @@ const EmployeeManagement = () => {
       <table className="employee-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Title</th>
-            <th>Phone</th>
-            <th>Action</th>
+            <th>{t("name")}</th>
+            <th>{t("title")}</th>
+            <th>{t("phone")}</th>
+            <th>{t("actions")}</th>
           </tr>
         </thead>
         <tbody>

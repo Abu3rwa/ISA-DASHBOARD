@@ -6,7 +6,7 @@
 .installments-container .table {
   background: var(--lighter-teal);
   margin: 10px;
-  width: 70%;
+  width: 85%;
 }
 .installments-container thead {
   background: white;

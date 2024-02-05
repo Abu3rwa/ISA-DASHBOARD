@@ -17,7 +17,7 @@ import { Button } from "@material-ui/core";
 import FinancesHomeScreen from "../finances/FinancesHomeScreen";
 import EmployeeManagement from "../employees/EmployeeManagement";
 import LandingScreen from "./LandingScreen";
-import arabic_translations from "../../translations/ar";
+import LanguageSelector from "../../components/common/LanguageSelector";
 import "./home.css";
 
 function CustomTabPanel(props) {
@@ -54,26 +54,16 @@ function a11yProps(index) {
 }
 
 export default function HomeScreen() {
-  const { t, i18n } = useTranslation();
-  useEffect(() => {
-    const lng = navigator.language;
-    i18n.changeLanguage(lng);
-  }, [i18n]);
-  const changeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
-  };
+  const { t } = useTranslation();
+
   const [value, setValue] = useState(0);
-  const lng = navigator.language;
-  console.log(lng);
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(value);
   };
-  console.log(arabic_translations);
   return (
     <div>
       <Box sx={{ width: "100%" }} className="home">
-        <select
+        {/* <select
           labelId="language-select-label"
           className="language"
           id="language-select"
@@ -83,7 +73,7 @@ export default function HomeScreen() {
         >
           <option value="en">English</option>
           <option value="ar">Arabic</option>
-        </select>
+        </select> */}
         <header className="header col-12 p-0">
           <Tabs
             className="tabs"
@@ -91,10 +81,10 @@ export default function HomeScreen() {
             onChange={handleChange}
             aria-label=" "
           >
-            <Tab label="Students Affairs" {...a11yProps(0)} />
-            <Tab label="Parents" {...a11yProps(1)} />
-            <Tab label="Employees Affairs" {...a11yProps(2)} />
-            <Tab label="Finances" {...a11yProps(3)} />
+            <Tab label={t("studentsAffairs")} {...a11yProps(0)} />
+            <Tab label={t("parents")} {...a11yProps(1)} />
+            <Tab label={t("employeesAffairs")} {...a11yProps(2)} />
+            <Tab label={t("finances")} {...a11yProps(3)} />
           </Tabs>
         </header>
         <div className="row col-12 home-body">
@@ -118,7 +108,22 @@ export default function HomeScreen() {
               <li>{t("events")} </li>
               <li>{t("upgrades")} </li>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={1} className="drawer-list ">
+            <CustomTabPanel value={value} index={1} className="drawer-list">
+              <Link className="link-dark" to="/all-installments">
+                <li>{t("payTuition")}</li>
+              </Link>
+              <Link className="link-dark" to="/all-installments">
+                <li>{t("installments")}</li>
+              </Link>
+              <Link className="link-dark" to="/all-installments">
+                <li>{t("communication")}</li>
+              </Link>
+              <li>{t("meetings")}</li>
+              <Link className="link-dark" to="/all-installments">
+                <li>{t("reports")}</li>
+              </Link>
+            </CustomTabPanel>
+            {/* <CustomTabPanel value={value} index={1} className="drawer-list ">
               <Link className="link-dark" to={`/all-installments`}>
                 <li>Pay Tuition </li>
               </Link>
@@ -132,17 +137,17 @@ export default function HomeScreen() {
               <Link className="link-dark" to={`/all-installments`}>
                 <li>Reports </li>
               </Link>
-            </CustomTabPanel>
+            </CustomTabPanel> */}
             <CustomTabPanel value={value} index={2} className="drawer-list ">
               <Typography variant="h4" className="tx-dark text-center m-2">
-                Employees Affairs
+                {t("employeesAffairs")}
               </Typography>
-              <li>Employees </li>
-              <li>Salaries </li>
-              <li>Loans </li>
-              <li> Recruitment and hiring</li>
-              <li> attendance </li>
-              <li> training and development</li>
+              <li>{t("employees")} </li>
+              <li>{t("salaries")} </li>
+              <li>{t("loans")} </li>
+              <li> {t("recruitment")}</li>
+              <li> {t("attendance")} </li>
+              <li> {t("trainingAndDevelopment")}</li>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={3} className="drawer-list ">
               <Typography variant="h4" className="tx-dark text-center m-2">
@@ -160,7 +165,7 @@ export default function HomeScreen() {
             <div className="settings-container">
               <Link to="/settings" className="link">
                 <Button variant="outlined" color="primary" type="submit">
-                  System Settings
+                  {t("systemSettings")}
                 </Button>
               </Link>
             </div>

@@ -11,13 +11,13 @@ import {
 import "./installmentsScreen.css";
 import Spinner from "../../components/common/Spinner";
 import { axiosInstance } from "../../config/axiosInstance";
+import { useTranslation } from "react-i18next";
 
 const InstallmentsScreen = () => {
   const [searching, setSearching] = useState(false);
   const [firstParent, setFirstParent] = useState(null);
+  const { t } = useTranslation();
 
-  const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
-  // const [parentList, setParentList] = useState([]);
   const [searchValue, setSearchValue] = useState(0);
   const location = useLocation();
   const parentId = location.pathname.split("/").pop();
@@ -38,8 +38,9 @@ const InstallmentsScreen = () => {
   const fetchParents = async () => {
     setLoading(true);
     try {
-      const response = await axiosInstance.get("/installments");
+      const response = await axiosInstance.get("/installments/all");
       setInstallments(response.data);
+      console.log(response.data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching parent list:", error);
@@ -54,20 +55,10 @@ const InstallmentsScreen = () => {
         <div className="installments-container pt-5 row mx-3">
           <div className="row-data my-4 row">
             {" "}
-            <Button
-              className="col-2 "
-              variant="outlined"
-              color="secondary"
-              startIcon={<ArrowBack />}
-              component={Link}
-              to="/"
-            >
-              back to homepage
-            </Button>
+            <h1 className="col-2 teal">{t("installments")}</h1>
             <div className="col-7 totals-container">
               <div className="totals col-11">
                 <div id="search">
-                  {/* <SearchIcon className="icon" /> */}
                   <input
                     onChange={handleSearch}
                     placeholder="search by name or ID..."
@@ -76,7 +67,16 @@ const InstallmentsScreen = () => {
                 </div>
               </div>
             </div>
-            <h1 className="col-2 teal">Installment</h1>
+            <Button
+              className="col-2 "
+              variant="outlined"
+              color="secondary"
+              startIcon={<ArrowBack className="me-2" />}
+              // component={Link}
+              to="/"
+            >
+              {t("home")}
+            </Button>
           </div>
 
           <table
@@ -86,53 +86,53 @@ const InstallmentsScreen = () => {
           >
             <thead className="table-header">
               <TableRow>
-                <TableCell>No</TableCell>
-                <TableCell>Parent Name</TableCell>
-                <TableCell>Amount</TableCell>
-                <TableCell>discount</TableCell>
-                <TableCell>Date</TableCell>
+                <TableCell>{t("installment")}</TableCell>
+                <TableCell>{t("parentName")}</TableCell>
+                <TableCell>{t("amount")}</TableCell>
+                <TableCell>{t("discount")}</TableCell>
+                <TableCell>{t("date")}</TableCell>
 
-                <TableCell>Actions</TableCell>
+                <TableCell>{t("actions")}</TableCell>
               </TableRow>
             </thead>
             <TableBody>
-              {installments.map((parent) => (
-                <TableRow key={parent.parent_id} className="parent">
-                  <TableCell>{parent.installment}</TableCell>
-                  <TableCell>{parent.parent_name}</TableCell>
-                  <TableCell>{parent.installment_amount}</TableCell>
-                  <TableCell>{parent.discount}</TableCell>
-                  <TableCell>{parent.date}</TableCell>
+              {installments?.map((installment) => (
+                <TableRow key={installment.parent_id} className="parent">
+                  <TableCell>{installment.installment}</TableCell>
+                  <TableCell>{installment.parent_name}</TableCell>
+                  <TableCell>{installment.installment_amount}</TableCell>
+                  <TableCell>{installment.discount}</TableCell>
+                  <TableCell>{installment.date}</TableCell>
 
                   <p className="  row-data actions">
                     <Button
-                      size="small"
+                      // size="small"
                       variant="contained"
                       color="secondary"
-                      startIcon={<Delete />}
-                      component={Link}
+                      startIcon={<Delete className="me-2" />}
+                      // component={Link}
                       to="#"
                     >
-                      Delete
+                      {t("delete")}{" "}
                     </Button>
                     <Button
-                      size="small"
+                      // size="small"
                       variant="outlined"
                       color="primary"
-                      startIcon={<Print />}
+                      startIcon={<Print className="me-2" />}
                     >
-                      Print
+                      {t("print")}{" "}
                     </Button>
-                    <Link to={`/parent/${parent.parent_id}`}>
+                    <Link>
                       <Button
-                        size="small"
+                        // size="small"
                         variant="contained"
                         color="primary"
-                        startIcon={<Edit />}
-                        component={Link}
+                        startIcon={<Edit className="me-2" />}
+                        // component={Link}
                         to="#"
                       >
-                        Edit
+                        {t("edit")}{" "}
                       </Button>
                     </Link>{" "}
                   </p>

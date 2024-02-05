@@ -1,43 +1,51 @@
-import React from "react";
-import "./bootstrap.min.css";
-import { Provider } from "react-redux";
-import ReactDOM from "react-dom/client";
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom";
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import HttpApi from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+import "bootstrap/dist/js/bootstrap.js";
 
 import App from "./App";
-import store from "./redux/store";
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import HttpApi from "i18next-http-backend";
 
-// i18next.use(HttpApi).init(i18nextOptions);
-i18n
-  .use(LanguageDetector)
+import "bootstrap/dist/css/bootstrap.min.css";
+import store from "./redux/store";
+import "flag-icon-css/css/flag-icon.min.css";
+import { Provider } from "react-redux";
+import Spinner from "./components/common/Spinner";
+
+i18next
   .use(HttpApi)
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    backend: {
-      loadPath: "../public/locales/{{lng}}/translations.json",
-    },
-    react: { useSuspense: false },
-
+    fallbackLng: "en",
+    // lng: localStorage.getItem("i18nextLng"),
+    debug: false,
+    // lng: `${window.localStorage.getItem("i18nextLng")}`,
     detection: {
-      order: [
-        "htmlTag",
-        "cookie",
-        "localStorage",
-        "querystring",
-        "sessionStorage",
-        "navigator",
-        "path",
-        "subdomain",
-      ],
+      order: ["cookie", "htmlTag", "localStorage", "path"],
       caches: ["cookie"],
     },
+    // react: { useSuspense: false },
+    backend: {
+      loadPath: "./assets/locales/{{lng}}/translations.json",
+    },
+    interpolation: {
+      escapeValue: false,
+    },
+    supportedLngs: ["en", "ar", "fr"],
   });
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+
+const loadingMarkup = <Spinner />;
+
+ReactDOM.render(
+  <Suspense fallback={loadingMarkup} store={store}>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
+  </Suspense>,
+  document.getElementById("root")
 );

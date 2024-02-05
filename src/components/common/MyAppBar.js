@@ -9,29 +9,28 @@ import logo from "../../assets/images/school-logo.png";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
-export default function MyAppBar() {
+export default function MyAppBar({ handleChangeLanuage }) {
   const token = useSelector((state) => state.user.token);
-  const [authToken, setAuthToken] = React.useState(token);
-  const anchorRef = React.useRef(null);
-  const location = useLocation();
-  const homePath = location.pathname.split("/").pop();
-  console.log("homePath: ", homePath);
-  // return focus to the button when we transitioned from !open -> open
-  React.useEffect(() => {}, [authToken]);
+  const { t } = useTranslation();
 
   return (
     <div sx={{ flexGrow: 1 }} className="appbar">
       <AppBar elevation={0} position="static row">
-        <Toolbar className="appbar col-8">
-          <h3 className="text-white mx-2">
-            <Link to="/">
-              <img className="logo mx-5" src={logo} />
-            </Link>
-            ISA International School
-          </h3>
-          <div className="col-3 row-data">
-            <h3 className="text-white mx-5">Admin</h3>
+        <Toolbar className="appbar col-12">
+          <div className="col-5 row-data">
+            <LanguageSelector handleChangeLanuage={handleChangeLanuage} />
+            <h3 className="text-white mx-2">
+              <Link to="/">
+                <img className="logo mx-2" src={logo} />
+              </Link>
+              {t("appTitle")}
+            </h3>
+          </div>
+          <div className="col-5 row-data">
+            <h5 className="text-white mx-5">Mrs. Nooria : {"ceo"} </h5>
             <Button
               onClick={() => {
                 localStorage.removeItem("token");
@@ -39,9 +38,9 @@ export default function MyAppBar() {
               }}
               variant="outlined"
               color="primary"
-              endIcon={<ExitToAppIcon />}
+              endIcon={<ExitToAppIcon className="m-1" />}
             >
-              Logout
+              {t("logout")}
             </Button>
           </div>
         </Toolbar>

@@ -79,7 +79,14 @@
   height: fit-content;
   /* background-color: var(--light-teal) !important; */
 }
-
+.right h6 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+  width: 100%;
+  border-bottom: 1px gray solid;
+}
 .parents .parents-list-header {
   display: flex;
   justify-content: center;

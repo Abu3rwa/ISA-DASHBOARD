@@ -8,9 +8,11 @@ import EditRounded from "@material-ui/icons/EditRounded";
 import More from "@material-ui/icons/More";
 import Payment from "@material-ui/icons/Payment";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function FirstParentCard({ firstParent }) {
   const [paidAndRemainingTuition, setPaidAndRemainingTuition] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchPaidAndRemainingTuition();
@@ -37,50 +39,50 @@ function FirstParentCard({ firstParent }) {
             size="small"
             variant="outlined"
             color="primary"
-            endIcon={<More />}
+            endIcon={<More className="me-2" />}
           >
-            More
+            {t("more")}
           </Button>
           <Button
             size="small"
             variant="contained"
             color="primary"
-            endIcon={<EditRounded />}
+            endIcon={<EditRounded className="me-2" />}
           >
-            Edit{" "}
+            {t("edit")}{" "}
           </Button>
           <Button
             size="small"
             variant="contained"
             color="secondary"
-            endIcon={<Delete />}
+            endIcon={<Delete className="me-2" />}
           >
-            Delete
+            {t("delete")}
           </Button>
         </div>
-        <h4 className="teal m-3">Parent Details</h4>
+        <h4 className="blue m-3">Parent Details</h4>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Name: <span className="teal">{firstParent?.name}</span>
+          {t("name")} <span className="blue">{firstParent?.name}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Email: <span className="teal">{firstParent?.email}</span>
+          {t("email")} <span className="blue">{firstParent?.email}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Phone: <span className="teal">{firstParent?.phone}</span>
+          {t("phone")}: <span className="blue">{firstParent?.phone}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Address: <span className="teal">{firstParent?.address}</span>
+          {t("address")}: <span className="blue">{firstParent?.address}</span>
         </h6>
         <h6 className="tx-dark m-3" color="textSecondary">
-          Gender: <span className="teal">{firstParent?.gender}</span>
+          {t("gender")}: <span className="blue">{firstParent?.gender}</span>
         </h6>
 
-        <Card className="m-2 p-2">
-          <h4 className="teal m-3">Tuitions</h4>
+        <div className="  p-2">
+          <h4 className="blue m-3">Tuitions</h4>
 
           <h6 className="tx-dark m-3" color="textSecondary">
             Remaining Tuition:{" "}
-            <span className="teal">
+            <span className="blue">
               {paidAndRemainingTuition?.remaining_tuition}
             </span>
           </h6>
@@ -92,20 +94,24 @@ function FirstParentCard({ firstParent }) {
           </h6>
           <div className="actions row-data">
             <Link to={`/installments/${firstParent?.parent_id}`}>
-              <Button endIcon={<Details />} variant="contained" color="primary">
-                Details
+              <Button
+                endIcon={<Details className="me-2" />}
+                variant="contained"
+                color="primary"
+              >
+                {t("details")}
               </Button>
             </Link>
             <Button
               size="small"
               variant="contained"
               color="secondary"
-              endIcon={<Payment />}
+              endIcon={<Payment className="me-2" />}
             >
-              Pay
+              {t("pay")}
             </Button>
           </div>
-        </Card>
+        </div>
       </CardContent>
     </Card>
   );

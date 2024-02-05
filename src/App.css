@@ -1,6 +1,16 @@
 .App {
   text-align: center;
 }
+@font-face {
+  font-family: "Arslan Wessam A";
+  src: url("./assets/fonts/rslan.ttf") format("truetype");
+  src: url("./assets/fonts/Roboto-Light.ttf");
+}
+
+body {
+  font-family: "Arslan Wessam A", Arial, sans-serif;
+  font-family: "Roboto";
+}
 
 .App-logo {
   height: 40vmin;
@@ -43,6 +53,14 @@
 }
 .teal-bg {
   background-color: #006b54 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important ;
+}
+.blue {
+  color: #000bd9 !important;
+}
+.blue-bg {
+  background-color: #033c73 !important;
   color: #ffffff !important;
   font-weight: 600 !important ;
 }
