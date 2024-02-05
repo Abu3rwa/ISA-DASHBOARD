@@ -30,7 +30,9 @@ export default function MyAppBar({ handleChangeLanuage }) {
             </h3>
           </div>
           <div className="col-5 row-data">
-            <h5 className="text-white mx-5">Mrs. Nooria : {"ceo"} </h5>
+            <h6 className="text-white mx-5">
+              <span className="mx-3">Mrs. Nooria </span> : {t("ceo")}{" "}
+            </h6>
             <Button
               onClick={() => {
                 localStorage.removeItem("token");

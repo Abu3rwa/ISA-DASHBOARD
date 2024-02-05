@@ -153,3 +153,12 @@ input:focus {
   background: white;
   width: 100%;
 }
+.parents thead tr td {
+  background: var(--main-bg);
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  border-radius: 0 !important;
+  border: 1px white solid;
+}

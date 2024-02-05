@@ -13,6 +13,7 @@ import { RemoveRedEye } from "@material-ui/icons";
 import FirstStudentCard from "../../components/student/firstStudentCard";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchStudents } from "../../redux/api_Calls/studentsServices";
+import { t } from "i18next";
 const StudentssScreen = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,7 @@ const StudentssScreen = () => {
         <div className=" parents row">
           <div className="left">
             <div className="my-3 parents-list-header">
-              <h2 className="text-grey text-center tx-dark">Students</h2>
+              <h2 className="text-grey text-center tx-dark">{t("students")}</h2>
               <div id="search">
                 <SearchIcon className="icon" />
                 <input
@@ -66,11 +67,11 @@ const StudentssScreen = () => {
                 >
                   <thead className="table-header">
                     <TableRow>
-                      <TableCell>Arabic Name</TableCell>
-                      <TableCell>English Name</TableCell>
-                      <TableCell>Phone</TableCell>
+                      <TableCell>{t("arabicName")}</TableCell>
+                      <TableCell>{t("englishName")}</TableCell>
+                      <TableCell>{t("phone")}</TableCell>
 
-                      <TableCell>Actions</TableCell>
+                      <TableCell>{t("actions")}</TableCell>
                     </TableRow>
                   </thead>
                   <TableBody>

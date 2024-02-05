@@ -31,6 +31,7 @@ import {
   fetchParentDataFailure,
 } from "../../redux/parentSlice";
 import FirstParentCard from "../../components/parents/FirstParentCard";
+import { t } from "i18next";
 
 const ParentsScreen = () => {
   const dispatch = useDispatch();
@@ -108,18 +109,18 @@ const ParentsScreen = () => {
                 >
                   <thead className="table-header">
                     <TableRow>
-                      <TableCell>No</TableCell>
-                      <TableCell>Name</TableCell>
-                      <TableCell>Phone</TableCell>
+                      <TableCell>{t("name")}</TableCell>
+                      <TableCell>{t("email")}</TableCell>
+                      <TableCell>{t("phone")}</TableCell>
 
-                      <TableCell>Actions</TableCell>
+                      <TableCell>{t("actions")}</TableCell>
                     </TableRow>
                   </thead>
                   <TableBody>
                     {parentList.map((parent) => (
                       <TableRow key={parent.parent_id} className="parent">
-                        <TableCell>{parent.parent_id}</TableCell>
                         <TableCell>{parent.name}</TableCell>
+                        <TableCell>{parent.email}</TableCell>
                         <TableCell>{parent.phone}</TableCell>
 
                         <TableCell className="actions">
